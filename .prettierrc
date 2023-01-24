@@ -1,6 +1,9 @@
---print-width 100
---prose-wrap "always"
---trailing-comma "all"
---single-quote true
---tab-width 2
---use-tabs: false
+{
+  // "printWidth": 100,
+  // "proseWrap": "always",
+  "semi": false,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "tabWidth": 2,
+  "useTabs": false
+}
