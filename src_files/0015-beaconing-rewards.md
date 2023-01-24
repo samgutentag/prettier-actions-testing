@@ -16,13 +16,13 @@ Beaconing with the modified reward structure outlined below does a much better j
 The existing PoC method and reward structure heavily rewards transmitters with minimal rewards for receivers while the vast majority of LoRaWAN usage is for unconfirmed uplinks, meaning hotspots mostly receive data.
 This reward structure better rewards real coverage and encourages honest hotspot owners to see maximized rewards as they build towards efficient network topologies.
 
-Beaconing, regardless of reward structures allows the elimination of Multi-hop PoC.  Multihop PoC significantly more complex than beaconing requiring complex path building and path verification,
-Significant overhread of building long paths that never complete (due to hop reliability being low).  Large payload sizes that are a-typical for many LoRa applications and require higher datarates, etc.
+Beaconing, regardless of reward structures allows the elimination of Multi-hop PoC. Multihop PoC significantly more complex than beaconing requiring complex path building and path verification,
+Significant overhread of building long paths that never complete (due to hop reliability being low). Large payload sizes that are a-typical for many LoRa applications and require higher datarates, etc.
 A lot of implementation complexity is removed with beaconing and those CPU and ledger resources can be re-allocated to more beneficial purposes (like combating gaming/exploitation).
 
 # Stakeholders
 
-All hotspot owners will be affected by this HIP as the reward structure and PoC behavior will undergo a significant change.  In general, hotspots that are able to witness many other hotspots are likely to see rewards go up and hotspots that can only witness a few hotspots may see rewards go down.
+All hotspot owners will be affected by this HIP as the reward structure and PoC behavior will undergo a significant change. In general, hotspots that are able to witness many other hotspots are likely to see rewards go up and hotspots that can only witness a few hotspots may see rewards go down.
 
 The Helium Inc developer team will also need to change sections of the blockchain-core to change how reward distribution is calculated and PoCs are build (although this can be very similar to a length 1 multihop PoC).
 
@@ -34,7 +34,7 @@ Beaconing behaves a lot like a single hop of PoC but there is no intended target
 Beacons can be initiated in the same manner as PoC today, where challenger hotspots trigger a hotspot to beacon and gather witness receipts (this works fine if the challenger role is being moved to CG per [Consensus Group PoC Challenges](https://github.com/helium/HIP/pull/41)).
 I assume each active hotspot will be targeted uniformly randomly so on average, each hotspot will be challenged the same number of times.
 
-To determine the rewards given for a beacon, first define a term ***reward unit***.
+To determine the rewards given for a beacon, first define a term **_reward unit_**.
 A reward unit is not a defined amount of HNT but a slice of the available PoC rewards for each epoch.
 So, for example if there are 1,000 HNT to be rewarded for PoC activity and there are 100 reward units from all PoC activity, each reward unit will get 10 HNT.
 If there are 5,000 reward units in an epoch, each unit will get 0.2 HNT.
@@ -50,16 +50,16 @@ Definitions:
 - `N` = Desired redundancy. `N`+1 hotspots cover an area (transmitter also covers area)
 - `r` = decay rate for additional transmitter reward if `w` > `N`.
 
- Reward formula for Transmitter:
+Reward formula for Transmitter:
 
- ![image RewardTX formula](./0015-beaconing-rewards/RewardTX_equation.PNG)
+![image RewardTX formula](./0015-beaconing-rewards/RewardTX_equation.PNG)
 
- Reward Formula for each Receiver:
+Reward Formula for each Receiver:
 
- ![image RewardRX formula](./0015-beaconing-rewards/RewardRX_equation.PNG)
+![image RewardRX formula](./0015-beaconing-rewards/RewardRX_equation.PNG)
 
- A chart showing reward distribution basd on the formulas listed above with example values of `N`=4 and `r`=0.8:
- ![image Reward distribution](./0015-beaconing-rewards/RewardDistributionHist.svg)
+A chart showing reward distribution basd on the formulas listed above with example values of `N`=4 and `r`=0.8:
+![image Reward distribution](./0015-beaconing-rewards/RewardDistributionHist.svg)
 
 There are 3 regions in this reward distribution described below:
 
@@ -93,24 +93,24 @@ Note: There is not a maximum number of witnesses but one can set a limit to cap 
 
 ### Example Reward Distribution
 
-The following tables list the reward distributed to transmitters and witnesses with example chain variables of `N`=4, `r`=0.8.  Note `r` of 0.8 was chosen so that 10 additional witnesses above `N` is ~0.9 reward credits.
+The following tables list the reward distributed to transmitters and witnesses with example chain variables of `N`=4, `r`=0.8. Note `r` of 0.8 was chosen so that 10 additional witnesses above `N` is ~0.9 reward credits.
 
-| # witnesses  | 1  | 2  | 3  | 4  |  5 | 6  | 7  | 8  |
-|---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|  RewardRX per witness |  1.00 | 1.00  | 1.00  | 1.00  | 0.76  | 0.61  | 0.50  | 0.43  |
-| RewardTX  | 0.25  | 0.50  |  0.75 | 1.00  | 1.20  | 1.36  | 1.49  | 1.59  |
+|          # witnesses |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |
+| -------------------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| RewardRX per witness | 1.00 | 1.00 | 1.00 | 1.00 | 0.76 | 0.61 | 0.50 | 0.43 |
+|             RewardTX | 0.25 | 0.50 | 0.75 | 1.00 | 1.20 | 1.36 | 1.49 | 1.59 |
 
-| # witnesses  | 9  | 10  | 11  | 12  | 13  | 14  | 15  |
-|---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| RewardRX per witness  | 0.37  | 0.33  | 0.29  | 0.26  | 0.24  |  0.22 | 0.21  |
-| RewardTX  |  1.67 | 1.74  | 1.79  | 1.83  | 1.87  | 1.89  | 1.91  |
+|          # witnesses |  9   |  10  |  11  |  12  |  13  |  14  |  15  |
+| -------------------: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| RewardRX per witness | 0.37 | 0.33 | 0.29 | 0.26 | 0.24 | 0.22 | 0.21 |
+|             RewardTX | 1.67 | 1.74 | 1.79 | 1.83 | 1.87 | 1.89 | 1.91 |
 
 ### Witness Distance Limits
 
 A radius `R` (today ~300m) sets the minimum distance for “valid” witnesses.
 Only witnesses beyond distance `R` are counted in the reward formulas.
 It is left to the implementation whether the challenger should filter out witness receipts that violate this threshold or allow them to be included in beacon receipts which may take the place of witnesses sufficient distance away.
-There is no penalty for having nearby witnesses (these can be accounted for in an additional proposal “*Method for geographic based transmit reward scaling*”).
+There is no penalty for having nearby witnesses (these can be accounted for in an additional proposal “_Method for geographic based transmit reward scaling_”).
 
 ### Invalid Witnesses Due to RSSI, SNR, or other gaming detection methods
 
@@ -130,58 +130,58 @@ If most witnesses are invalid, then its likely the transmitter is invalid and re
 
 This table gives some examples of rewards distributed for a beacon with varying number of witnesses.
 
-|  Scenario | 12 witnesses  | 8 witnesses  | 4 witnesses  | 2 witnesses  |
-|---:|:---:|:---:|:---:|:---:|
-| Witnesses outside R  |  12 | 8  | 4  | 2  |
-|  Invalid Witnesses |  0 |  0 |  0 |  0 |
-|  Reward per witness |  0.26 | 0.43  | 1.00  | 1.00  |
-|  Total RewardRX issued | 3.18  | 3.41  | 4.00  | 2.00  |
-|  RewardTX issued | 1.83  | 1.59  | 1.00  | 0.50  |
-| Total Reward issued | 5.00  | 5.00  | 5.00  | 2.50  |
+|              Scenario | 12 witnesses | 8 witnesses | 4 witnesses | 2 witnesses |
+| --------------------: | :----------: | :---------: | :---------: | :---------: |
+|   Witnesses outside R |      12      |      8      |      4      |      2      |
+|     Invalid Witnesses |      0       |      0      |      0      |      0      |
+|    Reward per witness |     0.26     |    0.43     |    1.00     |    1.00     |
+| Total RewardRX issued |     3.18     |    3.41     |    4.00     |    2.00     |
+|       RewardTX issued |     1.83     |    1.59     |    1.00     |    0.50     |
+|   Total Reward issued |     5.00     |    5.00     |    5.00     |    2.50     |
 
 This table gives examples of beacons with invalid witnesses
 
-|  Scenario | 12 witns. 2 invalid  | 12 witns. 10 invalid  | 4 witns. 1 invalid  | 4 witns. 3 invalid  |
-|---:|:---:|:---:|:---:|:---:|
-| Witnesses outside R  |  12 | 12  | 4  | 4  |
-|  Invalid Witnesses |  2 |  10 |  1 |  3 |
-|  Reward per witness |  0.26 | 0.26  | 1.00  | 1.00  |
-|  Total RewardRX issued | 2.65  | 0.53  | 3.00  | 1.00  |
-|  Tx Scale | 10/12 (0.83)  | 2/12 (0.17)  | 3/4 (0.75)  | 1/4 (0.25)  |
-|  RewardTX issued | 1.53  | 0.30  | 0.75  | 0.25  |
-| Total Reward issued | 4.18  | 0.83  | 3.75  | 1.25  |
+|              Scenario | 12 witns. 2 invalid | 12 witns. 10 invalid | 4 witns. 1 invalid | 4 witns. 3 invalid |
+| --------------------: | :-----------------: | :------------------: | :----------------: | :----------------: |
+|   Witnesses outside R |         12          |          12          |         4          |         4          |
+|     Invalid Witnesses |          2          |          10          |         1          |         3          |
+|    Reward per witness |        0.26         |         0.26         |        1.00        |        1.00        |
+| Total RewardRX issued |        2.65         |         0.53         |        3.00        |        1.00        |
+|              Tx Scale |    10/12 (0.83)     |     2/12 (0.17)      |     3/4 (0.75)     |     1/4 (0.25)     |
+|       RewardTX issued |        1.53         |         0.30         |        0.75        |        0.25        |
+|   Total Reward issued |        4.18         |         0.83         |        3.75        |        1.25        |
 
 ### Example Topologies MultiHop vs Beaconing
 
-Below are five examples to compare how they would be rewarded with the current multihop PoC to this beaconing proposal.  To compare apples to apples, I will call the reward given for a full challenge (RF receive, p2p receipt, RF transmit witnessed) a reward unit for the current multihop PoC.  This is similar to a beacon in the new method.
+Below are five examples to compare how they would be rewarded with the current multihop PoC to this beaconing proposal. To compare apples to apples, I will call the reward given for a full challenge (RF receive, p2p receipt, RF transmit witnessed) a reward unit for the current multihop PoC. This is similar to a beacon in the new method.
 
 Note in the current system, the initial target can only earn 2/3 (0.67) of a Reward Unit since it cannot demonstrate the ability to receive RF (it receives over p2p which is not rewarded).
 
- ![image Topology Examples](./0015-beaconing-rewards/TopologyExamples.svg)
+![image Topology Examples](./0015-beaconing-rewards/TopologyExamples.svg)
 
 A description of each figure:
 
 - **Figure (a)**: Two isolated hotspots that can witness only each other.
-- **Figure (b)**: a string of five hotspots A-E where the witness relationship is asymmetric.  B can witness A but A cannot witness B, C can witness B but B cannot witness C etc.
+- **Figure (b)**: a string of five hotspots A-E where the witness relationship is asymmetric. B can witness A but A cannot witness B, C can witness B but B cannot witness C etc.
 - **Figure (c)**: this figure is similar to (a) but with 100 hotspots collocated at each position.
-- **Figure (d)**:  is a ring of 24 hotspots that can all witness each other.  Assume hotspots are still spaced beyond minimum distance to witness.
-- **Figure (e)**: is six hotspots with a central hotspot A that can hear all other hotspots transmissions and all other hotspots can witness A’s transmissions.  Hotspots B-F cannot witness each other and can only communicate with A.
+- **Figure (d)**: is a ring of 24 hotspots that can all witness each other. Assume hotspots are still spaced beyond minimum distance to witness.
+- **Figure (e)**: is six hotspots with a central hotspot A that can hear all other hotspots transmissions and all other hotspots can witness A’s transmissions. Hotspots B-F cannot witness each other and can only communicate with A.
 - **Figure (f)**: is a ring of five hotspots where all hotspots can witness each other.
 
 A table of expected rewards for MultiHop PoC (used today) vs this HIPs beaconing rewards
 
-| Figure | (a)  | (b)  | (c)  | (d)  | (e)  | (f) |
-|---:|---|---|---|---|---|---|
-| MultiHop Rewards  | A:1.67<br>B:1.67 |  A:0.67, B:1.67<br>C:2.67, D:3.67<br>E:2.67 |  A(ea):1.67<br>B(ea):1.67 |  each:4.67 | A:5.67<br>B:1.67 | A-E:4.67 |
-| Beaconing Rewards  | A:1.25<br>B:1.25 |  A:0.25<br>B-D:1.25<br>E:1.00 |  A(ea):5.00<br>B(ea):5.00 | each:5.00  | A:6.20<br>B:1.01 | A-E:5.00 |
+|            Figure | (a)              | (b)                                        | (c)                      | (d)       | (e)              | (f)      |
+| ----------------: | ---------------- | ------------------------------------------ | ------------------------ | --------- | ---------------- | -------- |
+|  MultiHop Rewards | A:1.67<br>B:1.67 | A:0.67, B:1.67<br>C:2.67, D:3.67<br>E:2.67 | A(ea):1.67<br>B(ea):1.67 | each:4.67 | A:5.67<br>B:1.67 | A-E:4.67 |
+| Beaconing Rewards | A:1.25<br>B:1.25 | A:0.25<br>B-D:1.25<br>E:1.00               | A(ea):5.00<br>B(ea):5.00 | each:5.00 | A:6.20<br>B:1.01 | A-E:5.00 |
 
 We can see rewards are fairly similar except for two figures **(b)** and **(c)**.
 
 In figure (b) we see how asymetric witnessing may cause rewards to be pushed towards certain hotspots.
 Hotspot D gets roughly 2.2 times hotspot B even though it has identical coverage.
 
-In figure (c) beaconing hotspots earn significantly more than those with multihop PoC.  This is because the bulk of rewards go to witnessing and although there are only two distinct locations, there are enough witnesses to give the transmitter full credit and the witnesses get to split the maximum rewards for receivers per transmission.
-The best way to address this concern is to discount beconing rewards based on some form of density (See *Method for Geographic Based Transmit Reward Scaling* proposal).
+In figure (c) beaconing hotspots earn significantly more than those with multihop PoC. This is because the bulk of rewards go to witnessing and although there are only two distinct locations, there are enough witnesses to give the transmitter full credit and the witnesses get to split the maximum rewards for receivers per transmission.
+The best way to address this concern is to discount beconing rewards based on some form of density (See _Method for Geographic Based Transmit Reward Scaling_ proposal).
 
 # Drawbacks
 
@@ -192,30 +192,30 @@ The example topologies show small variations in rewards for most situations.
 There are some improvements to rewarding equal coverage equally but also some potential problems introduced where co-located hotspots may see increased rewards
 This beaconing reward proposal can be supplemented with other methods to account for these over-rewarded topologies.
 
-It may appear that beaconing is less secure since there is no multi-level onion packet.  I believe this was false security as it is just as easy to distribute raw data received over LoRa to miners whether that is an onion packet or a pseudorandom payload for beaconing.
+It may appear that beaconing is less secure since there is no multi-level onion packet. I believe this was false security as it is just as easy to distribute raw data received over LoRa to miners whether that is an onion packet or a pseudorandom payload for beaconing.
 The multi-level onion packet does not reduce the ability for hotspots to collude, completely virtualize or otherwise lie to increase earnings and in isolated gaming clusters this multihop worked to increase rewards.
 
 Having an intended target chosen from witnesses does not validate the PoC more than simple witnessing.
 
 # Rationale and Alternatives
 
-Beaconing breaks down the PoC to a more fundamental form of a single transmit and group of receive observations.  It allows more direct targeting of hotspots and PoC activity (and corresponding rewards) to be better controlled by targeting methods and not strongly dictated by witness topologies.
+Beaconing breaks down the PoC to a more fundamental form of a single transmit and group of receive observations. It allows more direct targeting of hotspots and PoC activity (and corresponding rewards) to be better controlled by targeting methods and not strongly dictated by witness topologies.
 
-There are many alternatives to this proposal, especially the reward structure.  We can keep rewards the same giving significant rewards to beacon transmitters and a small amount to witnesses.  I think this would be less optimal since the majority of LoRaWAN interactions are uplinks.
+There are many alternatives to this proposal, especially the reward structure. We can keep rewards the same giving significant rewards to beacon transmitters and a small amount to witnesses. I think this would be less optimal since the majority of LoRaWAN interactions are uplinks.
 
 # Unresolved Questions
 
 **Chain Variables**: This HIP presented a reasonable first guess at chain variables of `N`=4, `r`=0.8 but additional analysis may be required to optimize these numbers
 
-**Beacon Payload**: This HIP does not specify what the contents of a payload should be.  This is left to the implementers, but it could simply be a 0-hop onion packet like is used for beacons today (mainly for witness discovery).  Overall, the reward structure is independent of beacon payload.
+**Beacon Payload**: This HIP does not specify what the contents of a payload should be. This is left to the implementers, but it could simply be a 0-hop onion packet like is used for beacons today (mainly for witness discovery). Overall, the reward structure is independent of beacon payload.
 
 **Hotspot Impact Analysis**: The community may want more real-world samples of expected beaconing behavior and reward distribution based on existing witness lists to see how this change will effect reward distribution and if it is desirable (and more importantly healthy for network efficiency and growth).
 
 # Deployment Impact
 
-Current users will likely see a significant change in reward distribution based on this change.  This will also require a significant update to existing documentation on challenges and reward distribution.  Applications such as the phone apps and blockchain explorer will need significant changes to reflect the new PoC structure.  The blockchain core will need to be updated to implement beaconing and possibly changes to the ETL and API to reflect this change in behavior and the single PoC reward type.
+Current users will likely see a significant change in reward distribution based on this change. This will also require a significant update to existing documentation on challenges and reward distribution. Applications such as the phone apps and blockchain explorer will need significant changes to reflect the new PoC structure. The blockchain core will need to be updated to implement beaconing and possibly changes to the ETL and API to reflect this change in behavior and the single PoC reward type.
 
-Note a lot of the development effort may be mitigated by treating beacons as length-1 multihop PoC, zeroing out witness rewards and moving into PoC percentages and expanding the allowed number of witnesses.  This may not be the best beaconing implementation, but it would require the least amount of change to the codebase.
+Note a lot of the development effort may be mitigated by treating beacons as length-1 multihop PoC, zeroing out witness rewards and moving into PoC percentages and expanding the allowed number of witnesses. This may not be the best beaconing implementation, but it would require the least amount of change to the codebase.
 
 # Success Metrics
 

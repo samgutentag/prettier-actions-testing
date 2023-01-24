@@ -38,12 +38,13 @@ This HIP proposes the following changes to the CG election process:
 - Current members of the Consensus Group will be randomly deselected as well.
 - Geography will continue to be used to prevent hotspots in the same area to be elected to the Consensus Group (no changes).
 
-Due to the fact that CG selection will be randomly assigned, there is no need to expose it to users of the Helium app or Explorer.  We will consider removing score from the app and Explorer pending a full rework of the mechanism.
+Due to the fact that CG selection will be randomly assigned, there is no need to expose it to users of the Helium app or Explorer. We will consider removing score from the app and Explorer pending a full rework of the mechanism.
 
 # Drawbacks
+
 Randomized selection of CG members may lead to unexpected consequences and impact performance of the CG.
 
-- Randomized selection may result in more CG members who perform poorly. Hotspots with high scores  are the ones most likely to be elected to CG. And hotspots with high score likely have those high scores because the owner has taken deliberate steps to optimize their setup (or even game the network). It is reasonable to assume that deliberate attention to the hotspot setup results in better performance of CG members. If too many poor performing CG members are randomly elected under this proposal, it may stall the blockchain or otherwise hurt block times.
+- Randomized selection may result in more CG members who perform poorly. Hotspots with high scores are the ones most likely to be elected to CG. And hotspots with high score likely have those high scores because the owner has taken deliberate steps to optimize their setup (or even game the network). It is reasonable to assume that deliberate attention to the hotspot setup results in better performance of CG members. If too many poor performing CG members are randomly elected under this proposal, it may stall the blockchain or otherwise hurt block times.
 - This proposal provides more incentive to run hotspots without providing meaningful coverage. For example, "lone wolf" hotspots (a hotspot with no others in range) will, on average, see higher rewards. This may have undesirable effects on the growth of the network.
 
 # Rationale and Alternatives
@@ -52,7 +53,7 @@ There are a few alternatives to solving the core issue identified in this HIP: t
 
 By not taking up this proposal, CG rewards will continue to add incentive for hotspots to game PoC. Falsely asserting location and other gaming of PoC hurts the quality of the network and hurts honest hotspot owners. While this does not eliminate this gaming, it makes it slightly less profitable and starts to pave the way for a more robust CG approach.
 
-Additionally, it should be noted that PoC and CG have distinct portions of the HNT reward pool. As such, there should be a distinct mechanism for rewarding these. However the current scoring mechanism, if functioning properly, tightly couples these rewards: better PoC performance => higher score =>  greater chance to CG membership => more CG reward.
+Additionally, it should be noted that PoC and CG have distinct portions of the HNT reward pool. As such, there should be a distinct mechanism for rewarding these. However the current scoring mechanism, if functioning properly, tightly couples these rewards: better PoC performance => higher score => greater chance to CG membership => more CG reward.
 
 ### Alternative: Create new metric for hotspot CG score
 

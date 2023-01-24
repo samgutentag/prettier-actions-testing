@@ -8,6 +8,7 @@
 - Status: In Discussion
 
 ## Summary
+
 This HIP outlines a system of allowing Helium Network Validators to subscribe to one or many denylists for the purposes of blocking HNT rewards to dishonest Hotspots while recording on-chain records of the denied transactions. Proof of Coverage rewards have been, and continue to be, a viable economic incentive to bootstrap global wireless coverage. Rewards gaming by dishonest actors, even as a small percentage of the network, erodes network integrity. Ensuring that integrity requires a multi-pronged approach including protocol changes, increased accountability for Hotspot manufacturers, and increased security measures within the Hotspot itself. A denylist exists as another tool in a broader range of tools to ensure Hotspots on the network are incentivized to provide the most honest and accurate wireless coverage possible.
 
 In the interest of keeping the network decentralized, denylists will be sourced from the community. Credible decentralization ensures that no one entity can control the network. Any coordinated effort to game rewards, block data transfer, or censor information to benefit one party while harming another, undermines our mission of creating global, open wireless networks.
@@ -78,13 +79,13 @@ The denylist aggregator will serve both as an interface to explore the state of 
 
 By querying a specific b58 hash or multiple hashes, the aggregator would return a response that would allow for further inspection. As an example use case for this tool, denied transactions could point to a particular denylist from Helium blockchain explorers like explorer.helium.com or Hotspotty. This would allow a user to find the relevant list and dispute the denial in the case that their Hotspot experienced denied reward transactions. Additionally, Hotspot Makers can consider sending push notifications to Hotspot owners via their apps by leveraging this API.
 
-| <img src="0040-validator-denylist/transaction_denial_example.png" alt="Example of PoC denied" width="400"> |
-|:--|
-| Mock UI for representing a denied transaction in Helium Explorer. Denied transactions appear in the Hotspot’s activity list.|
+| <img src="0040-validator-denylist/transaction_denial_example.png" alt="Example of PoC denied" width="400">                   |
+| :--------------------------------------------------------------------------------------------------------------------------- |
+| Mock UI for representing a denied transaction in Helium Explorer. Denied transactions appear in the Hotspot’s activity list. |
 
-| <img src="0040-validator-denylist/hotspot_denial_example.png" alt="Example of a Hotspot with denied PoC." width="400"> |
-|:--|
-| Mock UI for a hotspot that has experienced a denied transaction. Warning would only appear if the hotspot experienced a denial.|
+| <img src="0040-validator-denylist/hotspot_denial_example.png" alt="Example of a Hotspot with denied PoC." width="400">          |
+| :------------------------------------------------------------------------------------------------------------------------------ |
+| Mock UI for a hotspot that has experienced a denied transaction. Warning would only appear if the hotspot experienced a denial. |
 
 ```jsx
 GET https://aggregator.domain.io/current/11xBfYCA24v9GpadmcP2ZQC4DVyfXsfSJ6J5983xebtysR8ZPCR
@@ -160,11 +161,11 @@ Validators already follow the existing denylist through the challenge prevention
 
 In the `github_release` type, the URL returns a JSON object (`application/json`) with the following properties:
 
-| Property name | Type | Purpose | Example |
-| --- | --- | --- | --- |
-| `tag_name` | string | Denotes current version of the list, for automated update checking. | `"2022040501"` |
-| `assets` | list(object) | Describes the final download URL. | `[ { "browser_download_url" : "..." }]` |
-| `assets[0].browser_download` | string | Contains the URL to the signed binary object representing the current version of the list. | `https://github.com/helium/denylist/releases/download/2022040501/filter.bin` |
+| Property name                | Type         | Purpose                                                                                    | Example                                                                      |
+| ---------------------------- | ------------ | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `tag_name`                   | string       | Denotes current version of the list, for automated update checking.                        | `"2022040501"`                                                               |
+| `assets`                     | list(object) | Describes the final download URL.                                                          | `[ { "browser_download_url" : "..." }]`                                      |
+| `assets[0].browser_download` | string       | Contains the URL to the signed binary object representing the current version of the list. | `https://github.com/helium/denylist/releases/download/2022040501/filter.bin` |
 
 #### Update Cadence
 

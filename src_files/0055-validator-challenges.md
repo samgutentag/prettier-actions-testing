@@ -1,4 +1,4 @@
-# HIP 55:  Validator Challenges
+# HIP 55: Validator Challenges
 
 - Author(s): [@Vagabond](https://github.com/Vagabond),
   [@andymck](https://github.com/andymck), [@abhay](https://github.com/abhay)
@@ -90,13 +90,13 @@ challenge information against the blockchain once they see it.
 ## Light Hotspots & gRPC
 
 Light Hotspots will maintain a durable gRPC (Google Remote Procedure Call) connection to one (or many)
-Validators.  The target Validator(s) could be random or specified.  Via the
+Validators. The target Validator(s) could be random or specified. Via the
 first durable connection, Light Hotspots will be streamed chain related data,
 events and notifications. Additional connections can be considered ephemeral
 and used for lookup requests if needed.
 
 All messages sent to a Light Hotspot from a Validator will be wrapped in a top
-level message (Protocol buffer schema provided below).  This message includes
+level message (Protocol buffer schema provided below). This message includes
 metadata which serves as an attestation on behalf of the sending Validator. The
 attestation data includes:
 
@@ -132,7 +132,7 @@ the network.
 Upon handling a block, each Validator will inspect the public keys
 in the block, identify any of their own keys, and for each, initiate a new PoC.
 The public key hash will be used with the block hash to generate entropy to
-generate an H3 region for the Challenge.  Entropy from a combination of the
+generate an H3 region for the Challenge. Entropy from a combination of the
 associated private key hash and the block hash will then be used to identify the
 target within the region to generate the Challenge itself. The region,
 challenge, and target will be persisted locally on the Challenger Validator.
@@ -153,7 +153,7 @@ All Hotspots, upon receipt of a challenge notification, will send a request over
 gRPC to the Challenger Validator to check if they are the target.
 
 The request will be signed by the Challengee and also include the onion key hash
-it received from their Validator.  The Challenger will verify the signature of
+it received from their Validator. The Challenger will verify the signature of
 the requesting Hotspot and, if it is indeed the target, a Challenge onion
 payload will be returned.
 
@@ -260,10 +260,10 @@ are transmitted.
 
 # Unresolved Questions
 
-This plan *does* consider and allow for Validator slashing to the extent the
+This plan _does_ consider and allow for Validator slashing to the extent the
 data payloads exchanged between the Light Hotspots and the Validators will include
 attestation data. This can enable a slashing
-mechanism.  It does not however propose the slashing implementation itself, that
+mechanism. It does not however propose the slashing implementation itself, that
 could be proposed in a future HIP.
 
 This plan also allows for an establishment of tracking which Validators that

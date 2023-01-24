@@ -48,7 +48,7 @@ public voting location and messaging through official, vastly more visible chann
 votes are to occur -- along with relevant context resources explaining each vote and its implications.
 
 Using private key signatures to cast votes is also a step up in loosely connecting participation in the network via some unique identifier
-(wallet address / DC burn), however there is no connection between stake in the network *utility* / infrastructure required to do so. Tying
+(wallet address / DC burn), however there is no connection between stake in the network _utility_ / infrastructure required to do so. Tying
 voting power to number on onboarded hotspots, validators, and/or DC held by routers provides a fair and logical basis and "stake" in the vote,
 which mirrors the voting party's stake in the network.
 

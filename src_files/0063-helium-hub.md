@@ -15,6 +15,7 @@ This HIP is an alternative to the one being presented as [HIP-51 Helium DAO](005
 The purpose of this HIP is to simplify the proposal of Helium becoming the center of multiple wireless protocols (omniprotocol access layer).
 
 - Provide the minimum requirements needed for the sub-protocol to earn;
+
   - data transfer rewards
   - Proof-of-Protocol-Service (PoPS) rewards
 
@@ -40,23 +41,24 @@ This explaination will describe the following in regards to Helium Hub and sub-p
 
 For the sub-protocol to be eligible for data transfer rewards it needs to;
 
-1) Have a public immutable ledger for attestation purposes with Helium Hub
+1. Have a public immutable ledger for attestation purposes with Helium Hub
 
-2) Have the capability to inform Helium Hub of it's epoch statistics (Oracles/Validators/IBC/etc) as a minimum would be the following;
+2. Have the capability to inform Helium Hub of it's epoch statistics (Oracles/Validators/IBC/etc) as a minimum would be the following;
 
-    - Data Credit (DC) Usage
+   - Data Credit (DC) Usage
 
-3) Must operate a bonding pool. This bonding pool is made up of two parts HNT and DC like a "normal" Helium wallet
+3. Must operate a bonding pool. This bonding pool is made up of two parts HNT and DC like a "normal" Helium wallet
+
    - DC is used to fund the DC usage (data transfer) of the sub-DAO
    - HNT is used to back the sub-protocol token via the programmatic treasury
 
-4) Must use DC's for data transfer. DC's can only be minted upon burning HNT. The HNT being burnt is from the sub-protocols bonding pool.
+4. Must use DC's for data transfer. DC's can only be minted upon burning HNT. The HNT being burnt is from the sub-protocols bonding pool.
 
-5) All sub-protocol tokens need to be backed by HNT via the bonding pool. The ratio is up to the sub-protocol and set upon creation. For example, 1 HNT can equal 1 sub-protocol token (SPT) or 1 HNT can equal 1000 SPT. This is used for SPT to HNT exchanges via the treasury.
+5. All sub-protocol tokens need to be backed by HNT via the bonding pool. The ratio is up to the sub-protocol and set upon creation. For example, 1 HNT can equal 1 sub-protocol token (SPT) or 1 HNT can equal 1000 SPT. This is used for SPT to HNT exchanges via the treasury.
 
 For the sub-protocol to be eligible for Proof-of-Protocol-Service (PoPS) it also needs to;
 
-1) Maintain 21,000,000 USD of DC in its bonding pool. Up to 10% of this amount can be used as a cold start bucket. This bond can be crowdfunded. In the funding phase, HNT accumulates until the 21,000,000 USD valuation is reached. At this point the HNT is burnt to DC and the sub-protocol then becomes eligible for PoPS. If the sub-protocol doesn't reach this valuation within the set timeframe those who bonded HNT to this fund are allowed to redeem their HNT.
+1. Maintain 21,000,000 USD of DC in its bonding pool. Up to 10% of this amount can be used as a cold start bucket. This bond can be crowdfunded. In the funding phase, HNT accumulates until the 21,000,000 USD valuation is reached. At this point the HNT is burnt to DC and the sub-protocol then becomes eligible for PoPS. If the sub-protocol doesn't reach this valuation within the set timeframe those who bonded HNT to this fund are allowed to redeem their HNT.
 
 ## Helium Hub - Rewards
 
@@ -64,9 +66,9 @@ The bonding pool functions both as an eligibility requirement and as the source 
 
 The amount of rewards that a sub-protocol will receive per epoch is based on two factors;
 
-1) The age of the sub-protocol and,
+1. The age of the sub-protocol and,
 
-2) The amount of DC being used by the sub-protocol
+2. The amount of DC being used by the sub-protocol
 
 The current network relies on Proof-of-Coverage and Data Transfers to reward hotspot operators for the service that they provide. This HIP will keep these reward pools and percentages the same but will suggest that Proof-of-Coverage to be renamed to Proof-of-Protocol-Service (for LoRa this is done using PoC but for a future sub-protocol it might not be coverage based).
 
@@ -76,25 +78,25 @@ The current network relies on Proof-of-Coverage and Data Transfers to reward hot
 
 ### Current Reward Models
 
-| Reward Type | Percentage HNT | Earned by Reward Type |
-| --- | --- | --- |
-| PoC Challenger | 0.90% - 2.11% | 15.6250 - 36.6319 |
-| PoC Challengees | 5.02% - 11.78% | 87.1527 - 204.5139 |
-| Witnesses | 20.08% - 47.11% | 348.6111 - 817.8819 |
-| Consensus Group | 6% | 104.1666 |
-| Security Tokens | 33% | 572.9166 |
-| Network Data Transfer | Up to 35% | Up to 607.6389 |
+| Reward Type           | Percentage HNT  | Earned by Reward Type |
+| --------------------- | --------------- | --------------------- |
+| PoC Challenger        | 0.90% - 2.11%   | 15.6250 - 36.6319     |
+| PoC Challengees       | 5.02% - 11.78%  | 87.1527 - 204.5139    |
+| Witnesses             | 20.08% - 47.11% | 348.6111 - 817.8819   |
+| Consensus Group       | 6%              | 104.1666              |
+| Security Tokens       | 33%             | 572.9166              |
+| Network Data Transfer | Up to 35%       | Up to 607.6389        |
 
 ### ⬇
 
 ### New Reward Models
 
-| Reward Type | Percentage HNT | Earned by Reward Type |
-| --- | --- | --- |
-| Proof-of-Protocol-Service | 26% - 61% | 451.3887 - 1059.0276 |
-| Network Data Transfer | Up to 35% | Up to 607.6389 |
-| Consensus Group | 6% | 104.1666 |
-| Security Tokens | 33% | 572.9166 |
+| Reward Type               | Percentage HNT | Earned by Reward Type |
+| ------------------------- | -------------- | --------------------- |
+| Proof-of-Protocol-Service | 26% - 61%      | 451.3887 - 1059.0276  |
+| Network Data Transfer     | Up to 35%      | Up to 607.6389        |
+| Consensus Group           | 6%             | 104.1666              |
+| Security Tokens           | 33%            | 572.9166              |
 
 With the reward pools adequately redefined each sub-protocol will be rewarded per epoch based on it's age and amount of DC it submits (this value can be attested by the Helium Hub at anytime).
 
@@ -102,47 +104,47 @@ The base equation for PoPS is an equal distribution between all eligible sub-pro
 
 3 years after reaching maturity date the sub-protocol will earn 0% of the PoPS reward pool per epoch.
 
-| TODAY | $IOT | $MOBILE |
-| --- | --- | --- |
-| Date Created | Jul 29th, 2019 | May 25th, 2022 |
+| TODAY         | $IOT           | $MOBILE        |
+| ------------- | -------------- | -------------- |
+| Date Created  | Jul 29th, 2019 | May 25th, 2022 |
 | Maturity Date | Jul 29th, 2022 | May 25th, 2025 |
-| PoPS % | 50% | 50% |
+| PoPS %        | 50%            | 50%            |
 
 ### ⬇
 
-| Jan 27, 2024 | $IOT | $MOBILE |
-| --- | --- | --- |
-| Date Created | Jul 29th, 2019 | May 25th, 2022 |
+| Jan 27, 2024  | $IOT           | $MOBILE        |
+| ------------- | -------------- | -------------- |
+| Date Created  | Jul 29th, 2019 | May 25th, 2022 |
 | Maturity Date | Jul 29th, 2022 | May 25th, 2025 |
-| PoPS % | 25% | 75% |
+| PoPS %        | 25%            | 75%            |
 
 ### ⬇
 
-| Jul 29, 2025 | $IOT | $MOBILE |
-| --- | --- | --- |
-| Date Created | Jul 29th, 2019 | May 25th, 2022 |
+| Jul 29, 2025  | $IOT           | $MOBILE        |
+| ------------- | -------------- | -------------- |
+| Date Created  | Jul 29th, 2019 | May 25th, 2022 |
 | Maturity Date | Jul 29th, 2022 | May 25th, 2025 |
-| PoPS % | 0% | 94% |
+| PoPS %        | 0%             | 94%            |
 
 Once the amount of HNT based on PoPS above is calculated the amount of HNT needed to be rewarded for DC usaged is calculated. If the sub-protocol reported DC usage > 1.5x the amount of PoPS that was going to be rewarded for that epoch the amount of PoPS is reduced propotionally from 100% - 0% (1.5x - 3x). The removed/reduced PoPS would be redistributed equally among the remaining eligible sub-protocols.
 
-| Today | $IOT | $MOBILE |
-| --- | --- | --- |
-| Initial PoPS | 217.88 | 217.88 |
-| DC usage | 0.32 | 132.86 |
-| DC Overflow | 237.2257128 | 237.2257128 |
-| Final PoPS | 217.88 | 217.88 |
-| Total | 455.43 | 587.97 |
+| Today        | $IOT        | $MOBILE     |
+| ------------ | ----------- | ----------- |
+| Initial PoPS | 217.88      | 217.88      |
+| DC usage     | 0.32        | 132.86      |
+| DC Overflow  | 237.2257128 | 237.2257128 |
+| Final PoPS   | 217.88      | 217.88      |
+| Total        | 455.43      | 587.97      |
 
 ### ⬇
 
-| Today | $IOT | $MOBILE |
-| --- | --- | --- |
-| Initial PoPS | 217.88 | 217.88 |
-| DC usage | 0.17 | 607.47 |
-| DC Overflow | 0 | 0 |
-| Final PoPS | 435.76 | 0 |
-| Total | 435.93 | 607.47 |
+| Today        | $IOT   | $MOBILE |
+| ------------ | ------ | ------- |
+| Initial PoPS | 217.88 | 217.88  |
+| DC usage     | 0.17   | 607.47  |
+| DC Overflow  | 0      | 0       |
+| Final PoPS   | 435.76 | 0       |
+| Total        | 435.93 | 607.47  |
 
 This reward structures sets an age on how long a sub-protocol is rewarded for building it's network. This reward is dependant on the sub-protocols age and amount of data the sub-protocol is moving. Which in turn will ensure no one is incentived to move dummy data to affect rewards thus preventing "Data Races".
 
@@ -162,8 +164,8 @@ Entities that can have custody of veHNT:
 
 The amount of veHNT received is determined by:
 
-> 1) the amount of HNT
-> 2) how long that HNT is locked up for
+> 1. the amount of HNT
+> 2. how long that HNT is locked up for
 
 A linear multiplier is applied based on the amount of time the HNT is locked up for;
 
@@ -178,8 +180,8 @@ A linear multiplier is applied based on the amount of time the HNT is locked up 
 For example, suppose A, B, and C all choose to lock up 1000 HNT:
 
 1. A chooses to lock up tokens for the minimum required duration of six months, and thus receives 1000 veHNT
-2. B chooses to lock up tokens for twenty-seven months, and thus receives 50 * 1000 = 50,000 veHNT
-3. C chooses to lock up tokens for forty-eight months, and thus receives 100 * 1000 = 100,000 veHNT
+2. B chooses to lock up tokens for twenty-seven months, and thus receives 50 \* 1000 = 50,000 veHNT
+3. C chooses to lock up tokens for forty-eight months, and thus receives 100 \* 1000 = 100,000 veHNT
 
 ### Governance Reach
 

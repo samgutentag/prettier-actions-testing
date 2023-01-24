@@ -46,15 +46,15 @@ With high investments required to become a validator, it will become more critic
 
 Looking at blocks 923722 (switch to 43 member Consensus Group) to 940522 (time of HIP update, approx 1pm PT July 27 2021), validators were under rewarded relative to the target percentage by ~4% (.24% short of 6% target).
 
-| Reward Type | Total HNT | Percentage | Target Percentage | Difference |
-| -- | ----- | ------ | ------ | ------- |
-|securities|596928.24|34.09%|34.00%|0.09%
-|poc_witnesses|813590.00|46.46%|21.24%|25.22%|
-|poc_challengees|203397.50|11.61%|5.31%|6.30%|
-|poc_challengers|36389.38|2.08%|0.95%|1.13%|
-|data_credits|25.87|0.00%|32.50%|-32.50%|
-|consensus|100833.33|5.76%|6.00%|-0.24%|
-|**Total**|**1,751,164.33**|**100.00%**|**100.00%**|**0.00%**|
+| Reward Type     | Total HNT        | Percentage  | Target Percentage | Difference |
+| --------------- | ---------------- | ----------- | ----------------- | ---------- |
+| securities      | 596928.24        | 34.09%      | 34.00%            | 0.09%      |
+| poc_witnesses   | 813590.00        | 46.46%      | 21.24%            | 25.22%     |
+| poc_challengees | 203397.50        | 11.61%      | 5.31%             | 6.30%      |
+| poc_challengers | 36389.38         | 2.08%       | 0.95%             | 1.13%      |
+| data_credits    | 25.87            | 0.00%       | 32.50%            | -32.50%    |
+| consensus       | 100833.33        | 5.76%       | 6.00%             | -0.24%     |
+| **Total**       | **1,751,164.33** | **100.00%** | **100.00%**       | **0.00%**  |
 
 Additionally, looking at epoch times for a 200 epoch period, we see that a typical epoch is ~33 blocks long with a shortest of 32 blocks and longest of 38. Only six epochs took more than 35 blocks to complete. This supports the rational that consensus rewards should be given a grace period. The 200 block period was choose as it represented more stable epoch times after initial validator issues and chain var settings were worked out.
 
@@ -71,9 +71,10 @@ As an economic change, this proposal has far reaching impacts:
 - Securities holders will see a decrease in percentage of total rewards (absolute securities rewards are unaffected; however, percentage of total rewards will decline due to increased consensus rewards)
 
 # Detailed Explanation
+
 Currently, consensus rewards per epoch are calculated using the Election Interval (a fixed target of 30 blocks) to determine what fraction of monthly rewards should be allocated to the current epoch. The following formula show how this works, in a simplified manner:
 
->Epoch Consensus Rewards = (Monthly Rewards x Consensus Percentage) x (Election Interval x Block Time / Seconds in a month)
+> Epoch Consensus Rewards = (Monthly Rewards x Consensus Percentage) x (Election Interval x Block Time / Seconds in a month)
 
 Election Interval is defined in blocks and Block Time is defined in Seconds.
 
@@ -82,7 +83,8 @@ You will note in this formula, the Consensus Rewards do not change when the epoc
 This proposal introduces uses the `election_restart_interval` which is currently `5` blocks as the grace period. This grace period is added to the election interval and allows for rewards to be calculated on the actual epoch length up to this limit.
 
 The revised calculation for consensus rewards will work as follows:
->Epoch Consensus Rewards = (Monthly Rewards x Consensus Percentage) x ( min(Actual Epoch Length, Election Interval + Election Resart Interval) x Block Time / Seconds in a month)
+
+> Epoch Consensus Rewards = (Monthly Rewards x Consensus Percentage) x ( min(Actual Epoch Length, Election Interval + Election Resart Interval) x Block Time / Seconds in a month)
 
 # Drawbacks
 

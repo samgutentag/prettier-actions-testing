@@ -36,9 +36,9 @@ With Consesnus rewards reduced, some focus may be detracted from Consensus. Howe
 
 Alternatives may include:
 
-1) Changing the proposed redistribution of rewards to better suit network focus (e.g. reduce Consensus rewards by 0.5% to increase Challange rewards by 0.5% of the total rewards pool, as opposed to 1% previously mentioned)
-2) Apply "penalties" or a PoC performance scale factor to Validators, however punitive measures should always be used with caution.
-3) Remove poorly performing Validators from the PoC functionality, however this may not solve the problem as other validators will need to pick up the work.
+1. Changing the proposed redistribution of rewards to better suit network focus (e.g. reduce Consensus rewards by 0.5% to increase Challange rewards by 0.5% of the total rewards pool, as opposed to 1% previously mentioned)
+2. Apply "penalties" or a PoC performance scale factor to Validators, however punitive measures should always be used with caution.
+3. Remove poorly performing Validators from the PoC functionality, however this may not solve the problem as other validators will need to pick up the work.
 
 # Unresolved Questions
 
@@ -51,6 +51,6 @@ As Validators readjust focus to PoC, Hotspots will see improved PoC stability an
 
 # Success Metrics
 
-1) PoC challange to reciept success rates will be higher post-HIP than pre-HIP over a given timeframe.
-2) Validators will update quicker than before to implement PoC optimisations.
-3) Block times during reward blocks will be reduced for a given PoC rate.
+1. PoC challange to reciept success rates will be higher post-HIP than pre-HIP over a given timeframe.
+2. Validators will update quicker than before to implement PoC optimisations.
+3. Block times during reward blocks will be reduced for a given PoC rate.

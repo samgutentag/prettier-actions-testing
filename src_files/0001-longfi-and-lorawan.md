@@ -109,16 +109,16 @@ only be sent when there is a downlink message (ie: not a Join-Response).
 # Drawbacks
 
 - Devices are required to update their AppKey and AppEUI to join the Helium
-Network
+  Network
 - There is no "Fingerprint" mechanism. That is to say, there no way for a
-Router to validate a message before accepting it from a Hotspot; therefore,
-Hotspot will forward packets without any negotiation with Routers.
+  Router to validate a message before accepting it from a Hotspot; therefore,
+  Hotspot will forward packets without any negotiation with Routers.
 
 # Rationale and Alternatives
 
 - A standalone LongFi protocol was taking too long
 - Modifications to the LoRaWAN specification may be made later to try to
-address any architectural shortcomings
+  address any architectural shortcomings
 
 # Unresolved Questions
 

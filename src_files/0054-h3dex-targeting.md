@@ -78,21 +78,21 @@ Steps leading up to targeting:
 4. Once in targeting phase:
 
 - A list of all the populated hexes (at h3 resolution 5) is fetched from the
-    Ledger.
+  Ledger.
 - A random state is initialized using the incoming entropy and the
-    Challenger's public key
+  Challenger's public key
 - An initial h3 hex `zone` is selected using an Inverse Cumulative
-    Distribution Function (ICDF) using random state and the hex list
+  Distribution Function (ICDF) using random state and the hex list
 - Random state is also stored for future computation
 
 5. Once an initial h3 hex (zone) is selected, it starts a recursive target
    selection mechanism which operates upon the following filters:
 
 - Filter out any inactive gateways (those which haven't been challenged in a
-    long time decided by the `poc_v4_target_challenge_age` chain variable).
+  long time decided by the `poc_v4_target_challenge_age` chain variable).
 - Do not target the Challenger Hotspot itself (this is obvious).
 - Do not target Hotspots which do not have relevant capability. Each Hotspot
-    in the ledger has a `mode` defined in `blockchain_caps.hrl`.
+  in the ledger has a `mode` defined in `blockchain_caps.hrl`.
 
 6. Once there is a filtered list of eligible targets, it re-runs the ICDF with
    the updated Random state and finds a Hotspot to Challenge.

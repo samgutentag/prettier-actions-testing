@@ -10,13 +10,13 @@
 
 ## Summary
 
-Add a new class of actors to the network, called Validators.  These will be staked actors, with the intention being to run them on stronger hardware with better network connections than the current Hotspots.  They will serve the dual purpose of being eligible for block production and also, in the future, acting as proxies for lightweight (non-chain-following) gateways.
+Add a new class of actors to the network, called Validators. These will be staked actors, with the intention being to run them on stronger hardware with better network connections than the current Hotspots. They will serve the dual purpose of being eligible for block production and also, in the future, acting as proxies for lightweight (non-chain-following) gateways.
 
 ## Motivation
 
-At the current rate of growth, running block production directly on the Hotspot network is rapidly becoming unsustainable.  Gossip network usage grows linearly with the size of the network, and slow addressing updates are a common cause of long block interval times.
+At the current rate of growth, running block production directly on the Hotspot network is rapidly becoming unsustainable. Gossip network usage grows linearly with the size of the network, and slow addressing updates are a common cause of long block interval times.
 
-Legacy hardware power and size also put sharp limits on the size of the group (and hence its security).  The fact that addresses aren't static also makes it difficult to reconnect when a Block Producer crashes, also leading to longer block times.  Low powered hardware on consumer-grade internet backhaul is much more subject to DoS attacks than high-end servers on cloud-grade connections.
+Legacy hardware power and size also put sharp limits on the size of the group (and hence its security). The fact that addresses aren't static also makes it difficult to reconnect when a Block Producer crashes, also leading to longer block times. Low powered hardware on consumer-grade internet backhaul is much more subject to DoS attacks than high-end servers on cloud-grade connections.
 
 There are also several sub-optimal measures the core team has had to take in order to keep block times consistent on the current hardware, such as a timeout on PoC transaction validation and adjusting the PoC challenge interval, that have led to undesirable side effects.
 
@@ -24,7 +24,7 @@ Lastly, the network is today heavily dependent on our libp2p implementation and 
 
 ## Stakeholders
 
-While this HIP affects everyone in the network, the only real effect is that ordinary Hotspots will not be able to participate in block production, leading to a loss of the “random” HNT flow (6% of total HNT mined) to the Hotspot pool.  The participants most affected by this change are those interested in running Validators.
+While this HIP affects everyone in the network, the only real effect is that ordinary Hotspots will not be able to participate in block production, leading to a loss of the “random” HNT flow (6% of total HNT mined) to the Hotspot pool. The participants most affected by this change are those interested in running Validators.
 
 We also expect the Testnet process, wherein we will stand up a separate network of Validators for testing purposes and to allow Validator runners to gain operational experience, to generate interest from outside of the community, as there exist professional Staking and Validator Pools for other blockchains.
 
@@ -32,7 +32,7 @@ We also expect the Testnet process, wherein we will stand up a separate network 
 
 #### Ledger changes
 
-To make this happen, we would make a new ledger entry type for the Validators.  This entry would have the Validator's stake level and the owning account, and any other required metadata.  All HNT earned by the Validator will automatically go into the owning account and is immediately liquid.
+To make this happen, we would make a new ledger entry type for the Validators. This entry would have the Validator's stake level and the owning account, and any other required metadata. All HNT earned by the Validator will automatically go into the owning account and is immediately liquid.
 
 #### Transactions
 
@@ -41,7 +41,7 @@ We will add 5 new transactions:
 - `gen_validator_v1`: validator pubkey, owner pubkey, stake: genesis-only txn creating a validator for testing.
 - `stake_validator_v1`: validator pubkey, owner pubkey, stake. Owner account is the funding account and description is a short public string that can be used to identify the validator., creates the validator
 - `transfer_validator_stake_v1`: new validator pubkey, old validator pubkey, old owner pubkey, new owner pubkey, stake, payment: moves a stake from validator to validator and optionally a new owner and payment
-- `unstake_validator_v1`: validator pubkey, owner pubkey, stake, release height: this starts the unlock process for the stake, returning it to the owner's account after some withdrawal period.  The validator is immediately unable to join block production groups
+- `unstake_validator_v1`: validator pubkey, owner pubkey, stake, release height: this starts the unlock process for the stake, returning it to the owner's account after some withdrawal period. The validator is immediately unable to join block production groups
 - `validator_heartbeat_v1`: validator pubkey, height, version: this provides the participants in the chain information about an individual validator's version and online status
 
 #### Primary Chain Variables
@@ -73,9 +73,9 @@ Please see open questions for how overstake may be applied to returns. We expect
 
 #### Hardware and Networking
 
-Validator nodes will need large disks for storing the chain and the ledger, and strong (but relatively modest by modern server standards) CPUs and RAM.  An AWS T2.large or xlarge should work fine.
+Validator nodes will need large disks for storing the chain and the ledger, and strong (but relatively modest by modern server standards) CPUs and RAM. An AWS T2.large or xlarge should work fine.
 
-The node will need to have a static IP and few ports (currently 2154 and eventually port 443) open to the internet.  A DNS resolvable hostname is strongly recommended.   Networking speed is variable, but load is largely symmetrical when producing blocks, so good upstream is recommended.  Most cloud machines will be fine, but e.g. a cable modem might struggle.  We don't recommend running these machines on consumer network connections.
+The node will need to have a static IP and few ports (currently 2154 and eventually port 443) open to the internet. A DNS resolvable hostname is strongly recommended. Networking speed is variable, but load is largely symmetrical when producing blocks, so good upstream is recommended. Most cloud machines will be fine, but e.g. a cable modem might struggle. We don't recommend running these machines on consumer network connections.
 
 ## Drawbacks
 
@@ -90,7 +90,7 @@ Realistically, there is no alternative that allows for large network growth othe
 
 Other designs:
 
-- Cloud Miners: Each Hotspot has a proxy in the cloud that is responsible for running its block production responsibilities and watching the chain for PoC responsibilities.  Since each cloud validator is rarely in the consensus group, this leads to weird provisioning scenarios and multi-tenancy issues.  If a miner can assume that it will be in the group relatively regularly, it's easier to cost out and simpler to do capacity planning for (and avoids collisions where an overcommitted cloud miner cluster gets too many members at once).
+- Cloud Miners: Each Hotspot has a proxy in the cloud that is responsible for running its block production responsibilities and watching the chain for PoC responsibilities. Since each cloud validator is rarely in the consensus group, this leads to weird provisioning scenarios and multi-tenancy issues. If a miner can assume that it will be in the group relatively regularly, it's easier to cost out and simpler to do capacity planning for (and avoids collisions where an overcommitted cloud miner cluster gets too many members at once).
 - Most DIY Hotspot setups follow the same model as Cloud Miners
 - Switching to another chain to run on has been determined to be currently infeasible due to limitations on storage and private computation
 
@@ -101,13 +101,13 @@ Other designs:
 
 - What is the impact of not doing this?
 
-More and more resources will need to be poured into the P2P aspect of the design, and we'll eventually need to add a layer of "stronger" validators in any case to keep up with transaction scaling.  Since we're always going to be held back by slow/lower memory group members, we will be limited in the complexity of the features that we can add and the stability of the network will continue to suffer.
+More and more resources will need to be poured into the P2P aspect of the design, and we'll eventually need to add a layer of "stronger" validators in any case to keep up with transaction scaling. Since we're always going to be held back by slow/lower memory group members, we will be limited in the complexity of the features that we can add and the stability of the network will continue to suffer.
 
 ## Unresolved Questions
 
-- How does overstake affect election chances?  Linearly?  Diminishing returns? etc.
+- How does overstake affect election chances? Linearly? Diminishing returns? etc.
 - What are the most desirable evolutions for this feature that are too complicated for the initial version?
-- Do we want to limit (at least initially) the number of nodes in order to put a floor under earnings?  We could link this to the on-chain oracle price, potentially.
+- Do we want to limit (at least initially) the number of nodes in order to put a floor under earnings? We could link this to the on-chain oracle price, potentially.
 
 ## Deployment Impact
 
@@ -153,7 +153,7 @@ A: It depends on the number of Validators and how often a Validator is randomly 
 
 ### Q: After staking and the block cooldown period would the Validator need to restake the 10k HNT to keep operating?
 
-A: The stake for a validator is perpetual rather than periodically renewed. Unstaking requires submitting an unstake transaction, after which the cooldown period begins.  After the cooldown period, the initial stake is returned to the owners account.
+A: The stake for a validator is perpetual rather than periodically renewed. Unstaking requires submitting an unstake transaction, after which the cooldown period begins. After the cooldown period, the initial stake is returned to the owners account.
 
 ### Q: How quickly will I receive rewards from staking?
 

@@ -22,7 +22,7 @@ This proposal impacts all current and future participants in the Helium IoT Comm
 We proposed in HIP 51 that each DNP subDAO operate as a sovereign economics and governance layer. The Helium IoT subDAO has six core functions
 
 1. **Emissions Curve** The Helium IoT subDAO handles all IOT emissions, mining rewards, and programmatic treasury operations. The economic responsibilities around this involve managing the token issuance and distribution.
-2. **Treasury Reserve DNT Market Making Curve** subDAOs have full control over the prices at which the subDAO treasury provides quotes to holders of DNT who wish to redeem their holdings for underlying HNT. This can be a flat bid or a more complex curve.**
+2. **Treasury Reserve DNT Market Making Curve** subDAOs have full control over the prices at which the subDAO treasury provides quotes to holders of DNT who wish to redeem their holdings for underlying HNT. This can be a flat bid or a more complex curve.\*\*
 3. **Oracle Specification** perform work including verifying proof of coverage and data transfer. The oracles are also responsible for distributing DNT mining rewards to the appropriate parties. Responsibilities here include definition of oracle software, minimum stake amounts, and rewards for participation.
 4. **Data Transfer Mechanism and Pricing** Data transfer within subnetworks occurs via the process of procuring and burning data credits in the name of the hotspot or set of hotspots that provide coverage. Responsibilities here include Organizationally Unique Identifier (OUI) registration, state channel creation, and bandwidth capacity per data credit definition.
 5. **Proof-of-Coverage Mechanism** Most subnetworks will utilize a Proof of Coverage algorithm to verify on an ongoing basis that hotspots are accurately representing their location and the wireless network coverage they are creating from that location. Responsibilities here include Proof-of-Coverage challenge construction, target selection, reward scaling, and verification. Note that subnetworks can choose to skip this mechanism, but must provide reasoning in their subDAO proposal as to why it is not necessary for proper functioning of the subnetwork.
@@ -39,7 +39,7 @@ The proposal is to have halvenings of IOT issuance every 2 years aligned with th
 For clarity, the emission schedule is as follows:
 
 | Year | IOT at the start of the year | IOT minted | % to Proof of Coverage (+ any extra from Data Transfer) | % to Data Transfer (excess to Proof of Coverage) | % to Oracles | Operations Fund | veHNT Stakers |
-|------|------------------------------|------------|---------------------------------------------------------|--------------------------------------------------|--------------|-----------------|---------------|
+| ---- | ---------------------------- | ---------- | ------------------------------------------------------- | ------------------------------------------------ | ------------ | --------------- | ------------- |
 | 1    | 5B                           | 65B        | 30%                                                     | 50%                                              | 7%           | 7%              | 6%            |
 | 2    | 70B                          | 32.5B      | 28.5%                                                   | 51.5%                                            | 7%           | 7%              | 6%            |
 | 3    | 102.5B                       | 32.5B      | 27%                                                     | 53%                                              | 7%           | 7%              | 6%            |
@@ -67,8 +67,8 @@ A user’s veIOT lockup power is determined by 1) the amount of IOT they lock up
 
 Users can choose to delegate their veIOT for three core purposes:
 
-1. *Oracle Delegation*: veIOT holders can delegate their holdings to oracles as per the reward agreements set in order to earn future emissions.
-2. *Governance*: veIOT can be used to participate in subDAO proposals that impact core protocol parameters, mechanisms, and operating procedures.
+1. _Oracle Delegation_: veIOT holders can delegate their holdings to oracles as per the reward agreements set in order to earn future emissions.
+2. _Governance_: veIOT can be used to participate in subDAO proposals that impact core protocol parameters, mechanisms, and operating procedures.
 
 ### Treasury Reserve DNT Market Making Curve
 

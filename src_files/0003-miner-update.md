@@ -112,7 +112,7 @@ signed image verification requires Docker Enterprise Engine.
 
 # Drawbacks
 
-- Why should we *not* do this?
+- Why should we _not_ do this?
 
 As with most other blockchain-based cryptocurrencies many alternative miner
 implementations are likely to be fueled by a desire to hack or game the system
@@ -139,7 +139,7 @@ The three miner update designs being considered can all be retrofitted on top of
 our existing consumer Helium Hotspots.
 
 - What other designs have been considered and what is the rationale for not
-choosing them?
+  choosing them?
 
 While there are several third party firmware update services like NervesHub,
 Mender and balena available none of them meet our immediate needs. NervesHub
@@ -158,19 +158,19 @@ and large cryptocurrency exchanges.
 # Unresolved Questions
 
 - What parts of the design do you expect to resolve through the HIP process
-before this gets merged?
+  before this gets merged?
 
 What is the minimum viable product we can implement without sacrificing security
 or diminishing the user experience?
 
 - What parts of the design do you expect to resolve through the implementation
-of this feature?
+  of this feature?
 
 Deploying Docker images to Hotspots is a new and unproven technique so the only
 way to evaluate that approach is through rapid prototyping.
 
 - What related issues do you consider out of scope for this HIP that could be
-addressed in the future independently of the solution that comes out of this HIP?
+  addressed in the future independently of the solution that comes out of this HIP?
 
 How does a third party package and sign a miner release for download and
 verification by a consumer Hotspot?

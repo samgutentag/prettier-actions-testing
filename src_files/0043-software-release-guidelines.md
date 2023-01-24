@@ -32,7 +32,7 @@ Sometimes this has been on Fridays or weekends, at this time a significant part 
 
 # Drawbacks
 
-- Why should we *not* do this? - It could be difficult for Helium developers to decide if an update is an emergency, or if it should potentially wait 4 days before release.
+- Why should we _not_ do this? - It could be difficult for Helium developers to decide if an update is an emergency, or if it should potentially wait 4 days before release.
 
 # Rationale and Alternatives
 

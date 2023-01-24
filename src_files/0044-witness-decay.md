@@ -1,10 +1,10 @@
 # HIP 44: Witness Reward Decay
 
-* Author(s): [@abhay](https://github.com/abhay)
-* Start Date: 2021-10-07
-* Category: Technical, Economic
-* Original HIP PR: <https://github.com/helium/HIP/pull/292>
-* Tracking Issue: <https://github.com/helium/HIP/issues/310>
+- Author(s): [@abhay](https://github.com/abhay)
+- Start Date: 2021-10-07
+- Category: Technical, Economic
+- Original HIP PR: <https://github.com/helium/HIP/pull/292>
+- Tracking Issue: <https://github.com/helium/HIP/issues/310>
 
 ## Summary and Motivation
 
@@ -50,9 +50,9 @@ The fortunate coincidence about this feature is that it's already built and is j
 
 ## Open Questions
 
-* Are these proposed values the correct starting
-* How do we verify that the proposed limits are right for the network?
-* How could these limits be adjusted in the future?
+- Are these proposed values the correct starting
+- How do we verify that the proposed limits are right for the network?
+- How could these limits be adjusted in the future?
 
 ## Success Metrics
 

@@ -16,10 +16,10 @@ If approved, this proposal would introduce a Hotspot ‘establishment period’ 
 
 This establishment period would only have a short-term impact on a host’s overall payback period. This proposed change to the rewards scheme would have a significantly negative impact on gaming economics thus redirecting the disproportionate gamed rewards back to hosts providing legitimate coverage. This also meaningfully improves coverage integrity for existing and prospective network users – core to the thesis of the ‘Helium Flywheel’. Further details on the implications to the Helium Flywheel are detailed in the following section.
 
-| **Precise Rosewood Urchin**                                                                                        |
-|------------------------------------------------------------------------------------------------------------------- |
-|<img src="0057-poc-rewards-establishment-period/precise-rosewood-urchin.png" style="max-width: 400px">                 |
-|In this example, a Hotspot has arbitraged delays in denylist action in order to accrue disproportionate gamed rewards. |
+| **Precise Rosewood Urchin**                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- |
+| <img src="0057-poc-rewards-establishment-period/precise-rosewood-urchin.png" style="max-width: 400px">                 |
+| In this example, a Hotspot has arbitraged delays in denylist action in order to accrue disproportionate gamed rewards. |
 
 # Background
 
@@ -42,27 +42,27 @@ Today, the time required to identify illegitimate Hotspots gives spoofers enough
 
 Throttled rewards of 10% for the first 15 days (10 witnesses are almost always recorded within this period) severely impact the economic incentive for gamers, albeit at a modest increase to the current payback period for a Hotspot. The following model compares the payback periods of (a) 10% of PoC rewards siphoned off to gamers, compared with (b) 10% throttled rewards for 15 days and those rewards returned to honest Hotspots.
 
-| **Today**                        | **Network With No Gaming**  | **With Gaming (assuming 10%)**  | **With Throttled Rewards**  |
-|:----------                      |---------------------------: |-------------------------------: |---------------------------: |
-|Total HNT per month               |2,500,000                   |2,500,000                       |2,500,000                   |
-|% to miners                       |60%                         |54%                             |60%                         |
-|HNT to miners                     |1,500,000                   |1,350,000                       |1,500,000                   |
-|# of Hotspots                     |625,000                     |625,000                         |625,000                     |
-|Average HNT per Hotspot per month |2.4                         |2.16                            |2.4                         |
-|Average HNT per Hotspot per day   |0.08                        |0.07                            |0.08                        |
-|HNT price                         |$22.50                      |$22.50                          |$22.50                      |
-|$ per day                         |$1.80                       |$1.62                           |$1.80                       |
-|Cost of Hotspot                   |$550                        |$550                            |$550                        |
-|Payback in days                   |**306**                     |**340**                         |**321**                     |
+| **Today**                         | **Network With No Gaming** | **With Gaming (assuming 10%)** | **With Throttled Rewards** |
+| :-------------------------------- | -------------------------: | -----------------------------: | -------------------------: |
+| Total HNT per month               |                  2,500,000 |                      2,500,000 |                  2,500,000 |
+| % to miners                       |                        60% |                            54% |                        60% |
+| HNT to miners                     |                  1,500,000 |                      1,350,000 |                  1,500,000 |
+| # of Hotspots                     |                    625,000 |                        625,000 |                    625,000 |
+| Average HNT per Hotspot per month |                        2.4 |                           2.16 |                        2.4 |
+| Average HNT per Hotspot per day   |                       0.08 |                           0.07 |                       0.08 |
+| HNT price                         |                     $22.50 |                         $22.50 |                     $22.50 |
+| $ per day                         |                      $1.80 |                          $1.62 |                      $1.80 |
+| Cost of Hotspot                   |                       $550 |                           $550 |                       $550 |
+| Payback in days                   |                    **306** |                        **340** |                    **321** |
 
 To broaden the illustration, we run the same model with different assumptions of the gaming on the network.
 
-|**Gamed % (Hypothetical)**  |**$/Day**  |**Days to Payback with Gamers**  |**Days to Payback Payback with Throttle**  |
-|--------------------------- |---------: |-------------------------------: |-----------------------------------------: |
-|15%                         |$1.53      |359                              |321                                        |
-|10%                         |$1.62      |340                              |321                                        |
-|5%                          |$1.71      |322                              |321                                        |
-|0%                          |$1.80      |306                              |321                                        |
+| **Gamed % (Hypothetical)** | **$/Day** | **Days to Payback with Gamers** | **Days to Payback Payback with Throttle** |
+| -------------------------- | --------: | ------------------------------: | ----------------------------------------: |
+| 15%                        |     $1.53 |                             359 |                                       321 |
+| 10%                        |     $1.62 |                             340 |                                       321 |
+| 5%                         |     $1.71 |                             322 |                                       321 |
+| 0%                         |     $1.80 |                             306 |                                       321 |
 
 A ramp up period favors long-term commitment which is good for commercial grade use of the network which in turn bolsters the value of the network. For the long-term aligned community, this is a small sacrifice that will ultimately raise rewards for all honest hosts.
 
@@ -73,6 +73,7 @@ Looking ahead, the payback period comes back down significantly as Light Hotspot
 All Hotspot hosts mining HNT.
 
 # Detailed Explanation
+
 Every Hotspot on the Helium Network will earn 10% of its normal earnings for its first 21,600 blocks (15 days assuming 60s blocks) AND until it has witnessed 10 Hotspot beacons following any location assert or reassert. Thereafter it will earn 100% of its full potential PoC rewards.
 
 ## Application to All Location Asserts
@@ -92,7 +93,9 @@ In addition to scaling the PoC rewards for the Hotspot in the establishment peri
 For example, there may be a scenario in the future where the establishment period of a Hotspot could be reduced by increasing the beacon frequency during this time. Doing this in an unthrottled manner would introduce an incentive for gamers to frequently reassert their Hotspots in order to ‘harvest’ the higher beaconing rate.
 
 # Drawbacks
+
 The payback period has already been extended by the global market correction’s negative effect on HNT price and the chip shortage affecting Hotspot cost. This is further exacerbated by Hotspot shipment delays related to global chip shortages. The community may not wish to add additional delays to rewards.
 
 # Deployment Impact
+
 No impact to currently deployed Hotspots. All Hotspots will be subject to scaled rewards for new location asserts following the deployment of this HIP.

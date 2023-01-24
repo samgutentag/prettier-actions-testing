@@ -35,7 +35,7 @@ Each valid witness can only balance one irregular witness. If a beacon has X val
 
 An irregular witness will be tagged as such on the explorer (whether ultimately considered valid or not) in order for hotspot owners to better understand their situation and fix it if necessary.
 
-This change would come with a new chain variable *irregular_to_valid_ratio*.
+This change would come with a new chain variable _irregular_to_valid_ratio_.
 
 - If set to 1 (its initial value), then each irregular witness would require a unique valid witness in order to become valid, as described above.
 - If set to 0.5, each irregular witness would require two valid witnesses in order to be considered valid.
@@ -49,14 +49,14 @@ This chain variable could then be modified through future HIP to fit the needs o
 
 IP checking can be a powerful tool against spoofing. However, on its own, this solution comes with a major weakness. Indeed, spoofing farms can easily hide their miners behind VPNs, allowing them to show different IPs while still being connected to the same internet connection. This proposal thus comes with a second part, focused around the restriction of VPN usage.
 
-Prior to the light hotspot update, many hotspots owners were *required* to use a VPN in order to open their 44158 port. Restricting the use of VPNs back then was therefore absolutely out of the question.
+Prior to the light hotspot update, many hotspots owners were _required_ to use a VPN in order to open their 44158 port. Restricting the use of VPNs back then was therefore absolutely out of the question.
 The light hotspot update removed this necessity entirely, as port forwarding is no longer required, making VPN restrictions a viable solution.
 
 In addition to checking whether a hotspot shares its IP with another hotspot within the same beaconing event, a hotspot's IP should be checked against its alleged location on the explorer. If a witness's IP's **country** does not match the registered location on the explorer, then that witness must be invalidated.
 
 - # Example
 
-- Beacon's IP  : A
+- Beacon's IP : A
 - Witness 1 IP : A
 - Witness 2 IP : A
 - Witness 3 IP : B
@@ -68,7 +68,7 @@ In addition to checking whether a hotspot shares its IP with another hotspot wit
 
 First, we tag these witnesses as either irregular, valid, or invalid :
 
-- Beacon's IP  : A
+- Beacon's IP : A
 - Witness 1 IP : A (irregular)
 - Witness 2 IP : A (irregular)
 - Witness 3 IP : B (irregular)
@@ -78,14 +78,14 @@ First, we tag these witnesses as either irregular, valid, or invalid :
 - Witness 7 IP : E (invalid, too close to the beacon)
 - Witness 8 IP : F (invalid, IP is in a different country than the hotspot's registered location)
 
-Then we check if the chain variable *irregular_to_valid_ratio* is negative. If it is, all irregular witnesses that are not yet considered invalid are marked as valid. This is the network's behavior before this HIP is implemented.
+Then we check if the chain variable _irregular_to_valid_ratio_ is negative. If it is, all irregular witnesses that are not yet considered invalid are marked as valid. This is the network's behavior before this HIP is implemented.
 Making this check at this stage allows hotspots to still be marked as irregular on the explorer, thus informing their owner.
 
-Otherwise, we multiply the number of valid witnesses (2) by the value of the global variable *irregular_to_valid_ratio* (initially 1) ;
-2 * 1 = 2 👩‍🏫
+Otherwise, we multiply the number of valid witnesses (2) by the value of the global variable _irregular_to_valid_ratio_ (initially 1) ;
+2 \* 1 = 2 👩‍🏫
 This gives us the number of irregular witnesses that can be randomly selected to be considered valid :
 
-- Beacon's IP  : A
+- Beacon's IP : A
 - Witness 1 IP : A (irregular, valid)
 - Witness 2 IP : A (irregular, invalid)
 - Witness 3 IP : B (irregular, invalid)
@@ -99,7 +99,7 @@ With the initial value of the chain variable, if there were more valid witnesses
 
 ~
 
-*"irregular" can be changed to "redundant" or "suspicious".*
+_"irregular" can be changed to "redundant" or "suspicious"._
 
 # Drawbacks
 

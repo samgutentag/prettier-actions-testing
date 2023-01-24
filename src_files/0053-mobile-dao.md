@@ -51,17 +51,17 @@ subDAOs retain control over critical components of the network, and subDAO membe
 
 The remainder of this proposal defines initial values for the subDAO given the aforementioned set of responsibilities.
 
-### *Economics Overview*
+### _Economics Overview_
 
 There are a number of real world physical entities that comprise the network and perform the following functional and economic roles:
-| Name              | Functional Role                                                                                                                                                                                                                                                                                                                                                                           | Economic Role                                                                                                                                                                                            |
+| Name | Functional Role | Economic Role |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Subscriber        | Uses the network                                                                                                                                                                                                                                                                                                                                                                          | Pays service providers to access data on the network                                                                                                                                                     |
-| Mapper            | Runs a network mapping app on the phone or uses a dedicated mapper device to verify coverage provided by the hotspot hosts.  Mappers are required to be a subscriber.                                                                                                                                                                                                                     | Receives MOBILE mining rewards for mapping networking coverage                                                                                                                                              |
-| Service Provider  | Promotes network service to subscribers and mappers  Runs subscriber database and authenticates inbound subscribers and mappers into the network    Records data transfer transactions to state channels by running session purchaser instance Issues sim cards to subscribers and mappers Maintains their flavor of the witnessing app Responds to subscriber and mapper support queries | Receives payments for data access from subscribers and mappers  Burns HNT into Data Credits and settles data usage with hotspot hosts    Stakes MOBILE to receive % of rewards from MOBILE Emissions contract  |
-| Hotspot Host      | Operates a  hotspot (can be 5G or Wi-Fi) and pays for backhaul. Note that there are two onboarding fees associated with the Hotspot Host: 1) Hotspot addition fees ($40) and 2) Assert Location fees ($10)                                                                                                                                                                                                                                                                                                                             | Receives MOBILE mining rewards for providing coverage  Receives MOBILE mining rewards for providing data access to subscribers                                                                                 |
-| Hotspot Vendor    | Builds and sells hotspots  Supports hotspot hosts  Runs software to provide  updates of hotspots Maintain integrations with service providers                                                                                                                                                                                                                                             | Stakes MOBILE Receive % of rewards mined by hotspot hosts                                                                                                                                                   |
-| Oracles           | Relay data to L1 emission contract Calculate incentive points for service providers and mappers                                                                                                                                                                                                                                                                                           | Stake MOBILE  Receive % of rewards from emissions contract                                                                                                                                                  |
+| Subscriber | Uses the network | Pays service providers to access data on the network |
+| Mapper | Runs a network mapping app on the phone or uses a dedicated mapper device to verify coverage provided by the hotspot hosts. Mappers are required to be a subscriber. | Receives MOBILE mining rewards for mapping networking coverage |
+| Service Provider | Promotes network service to subscribers and mappers Runs subscriber database and authenticates inbound subscribers and mappers into the network Records data transfer transactions to state channels by running session purchaser instance Issues sim cards to subscribers and mappers Maintains their flavor of the witnessing app Responds to subscriber and mapper support queries | Receives payments for data access from subscribers and mappers Burns HNT into Data Credits and settles data usage with hotspot hosts Stakes MOBILE to receive % of rewards from MOBILE Emissions contract |
+| Hotspot Host | Operates a hotspot (can be 5G or Wi-Fi) and pays for backhaul. Note that there are two onboarding fees associated with the Hotspot Host: 1) Hotspot addition fees ($40) and 2) Assert Location fees ($10) | Receives MOBILE mining rewards for providing coverage Receives MOBILE mining rewards for providing data access to subscribers |
+| Hotspot Vendor | Builds and sells hotspots Supports hotspot hosts Runs software to provide updates of hotspots Maintain integrations with service providers | Stakes MOBILE Receive % of rewards mined by hotspot hosts |
+| Oracles | Relay data to L1 emission contract Calculate incentive points for service providers and mappers | Stake MOBILE Receive % of rewards from emissions contract |
 
 To operate on the network, service providers and hotspot vendors must control a respective NFT. Getting this NFT requires hotspot vendors and service providers to:
 
@@ -112,7 +112,7 @@ Total number of tokens distributed specifically for PoC events will vary from 20
 
 Tokens related to data credit burn are distributed in direct proportion to the number of DCs burned and are a function of amount of data offloaded by a particular hotspot and price of DC set by the DAO. See Data Transfer Mechanism and Pricing section for more details.
 
-### *Emissions Curve*
+### _Emissions Curve_
 
 There will be a max supply of 250B MOBILE.
 
@@ -121,17 +121,17 @@ The proposal is to have halvenings of MOBILE issuance every 2 years aligned with
 We also propose that 50B MOBILE are pre-mined at the launch of the network, and distributed to the subDAO operations fund administered by the Helium Foundation. Some fraction of this allocation is distributed over the course of the genesis period to live Mobile Network hotspots on an epochal basis in roughly equal proportion (akin to universal basic income).
 
 For clarity, the emission schedule is as follows:
-| Year | MOBILE at the start of the year | MOBILE minted | Hotspot PoC  | Hotspot Data (excess to PoC) | Mappers | Service Providers | Oracles | veHNT Stakers |
+| Year | MOBILE at the start of the year | MOBILE minted | Hotspot PoC | Hotspot Data (excess to PoC) | Mappers | Service Providers | Oracles | veHNT Stakers |
 |------|---------------------------------|---------------|--------------|------------------------------|---------|-------------------|---------|---------------|
-| 1    | 50B                             | 116B*         | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 2    | 116B                            | 33B           | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 3    | 149.5B                           | 33B           | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 4    | 182B                            | 16.5B         | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 5    | 198.5B                          | 16.5B         | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 6    | 215B                            | 8.25B         | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 7    | 223.25B                         | 8.25B         | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 1 | 50B | 116B\* | 20% | 40% | 10% | 20% | 4% | 6% |
+| 2 | 116B | 33B | 20% | 40% | 10% | 20% | 4% | 6% |
+| 3 | 149.5B | 33B | 20% | 40% | 10% | 20% | 4% | 6% |
+| 4 | 182B | 16.5B | 20% | 40% | 10% | 20% | 4% | 6% |
+| 5 | 198.5B | 16.5B | 20% | 40% | 10% | 20% | 4% | 6% |
+| 6 | 215B | 8.25B | 20% | 40% | 10% | 20% | 4% | 6% |
+| 7 | 223.25B | 8.25B | 20% | 40% | 10% | 20% | 4% | 6% |
 
-** 50B pre-mine, 66B emitted in year 1*
+\*_ 50B pre-mine, 66B emitted in year 1_
 
 Please note that if the genesis period extends beyond August 1, the emissions due in the stub period are not mined. Further, if a given stakeholder is not fully operational on the network at any given time, the corresponding tokens are not mined.
 
@@ -151,7 +151,7 @@ Users can choose to delegate their veMOBILE for two core purposes:
 1. Oracle Delegation: veMOBILE holders can delegate their holdings to oracles in order to earn future emissions.
 2. Governance: veMOBILE can be used to participate in subDAO proposals that impact core protocol parameters, mechanisms, and operating procedures. veMOBILE that is staked to a hotspot or to an oracle can still vote on governance proposals.
 
-### *Treasury Reserve DNT Market Making Curve*
+### _Treasury Reserve DNT Market Making Curve_
 
 The Mobile subDAO sets the programmatic treasury formula in order to provide quotes to holders of DNT who wish to redeem their holdings for underlying HNT. The programmatic treasury defines the floor price for MOBILE, but holders always retain the ability to exchange at the prevailing rate on open markets.
 
@@ -188,7 +188,7 @@ Clarifications:
 - The supply of MOBILE tokens for the purposes of calculating the MOBILE/HNT price includes all locked MOBILE tokens.
 - The subDAO updates the limit order price every epoch **before** any new MOBILE are distributed out to stakeholders for their activity during that epoch.
 
-## *Data Transfer and Pricing Specification*
+## _Data Transfer and Pricing Specification_
 
 Data Credits are a universal unit of payment across all Helium DAOs and will be utilized by the Service Providers in the Helium Mobile DAO ecosystem as payment for packet transfers.
 
@@ -198,7 +198,7 @@ Helium Mobile Network DAO will operate a chain variable that will dictate the co
 
 The initial price per GB of Mobile Network data is suggested to be set at $0.5 per Gigabyte, which means that 1 Helium data credit, when used for data on Mobile Helium DAO will convert to $0.00000003 per LTE packet of 66 bytes.
 
-## *Oracle Operations*
+## _Oracle Operations_
 
 Mobile Network oracles perform the following functions:
 
@@ -222,7 +222,7 @@ PoC implementation proposed in the Helium Mobile Network subDAO is based on wire
 
 For Mobile Network subDAO we propose to separate the challenge and witness function(s) between the operator of a hotspot and a mapper device (such as a phone or a dedicated mapper) with a sim card that has been authorized to perform the witness function. During the launch stages of the DAO we propose a simplified approach to mapping coverage as follows:
 
-The world is divided into hexes using the H3 geospatial [indexing system](https://h3geo.org/docs/). All hotspots exist as NFTs associated with their unique pub keys and will receive *Eligibility Rewards* and *Mapping Rewards*. All hotspots will receive eligibility rewards as long as they meet the following minimum criteria:
+The world is divided into hexes using the H3 geospatial [indexing system](https://h3geo.org/docs/). All hotspots exist as NFTs associated with their unique pub keys and will receive _Eligibility Rewards_ and _Mapping Rewards_. All hotspots will receive eligibility rewards as long as they meet the following minimum criteria:
 
 1. Stay registered in a Spectrum Access System (SAS), as evidenced by the Domain Proxy software that’s operated by a hotspot vendor
 2. Meet minimum backhaul QoS of 100Mps on the downlink and 10Mps on the uplink, as evidenced by the randomized backhaul challenges run by the hotspot firmware
@@ -239,7 +239,7 @@ During initial launch stages, when network density is low, to combat gaming, Hel
 
 During consequent launch stages, as the density of mappers grows, Helium Mobile DAO will look to implement a more robust algorithm, similar to Helium LoRa PoC, whereby only randomly challenged hotspots can be witnessed. Details of this mechanism along with analysis of various attack vectors have been previously published and discussed with the community in HIP37 but these implementations are subject to change as we gather more data about deployments.
 
-### *Governance Specification*
+### _Governance Specification_
 
 Mobile Network Network is under the control of the subDAO. All subDAO proposals must come attached with code to be approved.
 

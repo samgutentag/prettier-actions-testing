@@ -32,19 +32,19 @@ The technical and economic design decisions of the Helium Network historically h
 
 This proposal outlines two constructions to address the aforementioned core problems:
 
-1. *Blockchain Scalability* We propose that each DNP has oracles who operate software to calculate DNP specific items (eg: all the Proof-of-Coverage code that exists on the current LoRaWAN network to determine Hotspot rewards) and make DNT payments to DNP stakeholders (e.g., miners, stakers, etc). Oracles stake DNTs and are rewarded by a portion of DNT inflation.
+1. _Blockchain Scalability_ We propose that each DNP has oracles who operate software to calculate DNP specific items (eg: all the Proof-of-Coverage code that exists on the current LoRaWAN network to determine Hotspot rewards) and make DNT payments to DNP stakeholders (e.g., miners, stakers, etc). Oracles stake DNTs and are rewarded by a portion of DNT inflation.
 
 These oracles share a set of network rules and submit independent attestations (through signatures or proofs) or come to consensus on their calculations and submit them in aggregate to the Helium Network.
 
-2. *DNP Specific Incentive Alignment* We propose that each DNP operate as its own subDAO within the broader umbrella of the Helium Network. DNP subDAOs are able to issue DNTs to their stakeholders and DNT denominated governance controls DNP specific attributes.
+2. _DNP Specific Incentive Alignment_ We propose that each DNP operate as its own subDAO within the broader umbrella of the Helium Network. DNP subDAOs are able to issue DNTs to their stakeholders and DNT denominated governance controls DNP specific attributes.
 
 # **Motivation**
 
 There are three key drivers for proposing that DNP specific calculations are done by DNP oracles and then submitted to the the overall Helium Network:
 
-1. *Scalability -* Each DNP has the ability to run its own code for DNP specific items. This enables multiple parallel developer teams to work on advancing the Helium Network. This design also allows for the complex Proof-of-Coverage calculations to be done off chain and therefore minimizes state bloat and transaction costs on the L1.
-2. *Native Tokens -* Provide Separation of Governance Each DNP effectively governs its Proof-of-Coverage rules, Data Transfer pricing, and rewards distribution mechanisms through DNT voting. This structure provides significantly more flexibility over the structure of the DNP and allows those who are closest to a network to drive its own governance.
-3. *Composability Implies Utility -* If the overall Helium Network L1 is able to support smart contracts, it is possible to imagine a variety of novel use cases for HNT as well as each of the DNT tokens. Some examples here are decentralized exchanges, money markets (liquid borrow-lend markets for greater delegation to validators or leveraged staking), and token reward splitting (mining rewards being sent to multiple addresses).
+1. _Scalability -_ Each DNP has the ability to run its own code for DNP specific items. This enables multiple parallel developer teams to work on advancing the Helium Network. This design also allows for the complex Proof-of-Coverage calculations to be done off chain and therefore minimizes state bloat and transaction costs on the L1.
+2. _Native Tokens -_ Provide Separation of Governance Each DNP effectively governs its Proof-of-Coverage rules, Data Transfer pricing, and rewards distribution mechanisms through DNT voting. This structure provides significantly more flexibility over the structure of the DNP and allows those who are closest to a network to drive its own governance.
+3. _Composability Implies Utility -_ If the overall Helium Network L1 is able to support smart contracts, it is possible to imagine a variety of novel use cases for HNT as well as each of the DNT tokens. Some examples here are decentralized exchanges, money markets (liquid borrow-lend markets for greater delegation to validators or leveraged staking), and token reward splitting (mining rewards being sent to multiple addresses).
 
 # **Stakeholders**
 
@@ -57,18 +57,20 @@ HIP 51 is to be implemented in three phases, each of which is contingent upon ap
 The phases are defined as follows:
 
 1. Phase I (Q2 2022) : As per HIP 53: Helium Mobile subDAO, MOBILE token is issued on the existing Helium blockchain. This will immediately allow any online 5G radio to mine MOBILE tokens.
-    1. The pre-mine amount specified in the Economics Overview section of the proposal is assigned to a multi-signature wallet held by the Helium Foundation. For the purposes of this HIP, we propose that 50B of 250B MOBILE is pre-mined and deposited to the Foundation.
-    2. The Helium Foundation then utilizes this reserve of MOBILE tokens to immediately perform market activities critical to the functioning of the Mobile network, including rewards for hotspots and community or business development efforts.
+
+   1. The pre-mine amount specified in the Economics Overview section of the proposal is assigned to a multi-signature wallet held by the Helium Foundation. For the purposes of this HIP, we propose that 50B of 250B MOBILE is pre-mined and deposited to the Foundation.
+   2. The Helium Foundation then utilizes this reserve of MOBILE tokens to immediately perform market activities critical to the functioning of the Mobile network, including rewards for hotspots and community or business development efforts.
 
 2. Phase II (August 1, 2022) : On the third anniversary of the Helium Network, the IOT token is issued on the working Helium blockchain as per HIP 52: IoT subDAO,
-    1. The specified emissions curve and treasury reserve redemption contract (one-way implementation of the market making curve) is deployed to the network such that core subDAO economic structures are in place. This will allow MOBILE and IOT holders to redeem for HNT in their respective treasuries if they choose or continue to hold the DNT. At this point, all HNT emissions are deposited to subDAO treasuries, existing Helium Validators, and HST holders. Each subnetwork rewards Hotspots through DNTs for data transfer and Proof-of-Coverage.
-    2. Remaining portions of the HIP 52 and HIP 53 specifications that are deemed to be within scope by Helium Foundation are bundled. This will likely include updates to the proof-of-coverage mechanism for the Mobile subDAO.
+
+   1. The specified emissions curve and treasury reserve redemption contract (one-way implementation of the market making curve) is deployed to the network such that core subDAO economic structures are in place. This will allow MOBILE and IOT holders to redeem for HNT in their respective treasuries if they choose or continue to hold the DNT. At this point, all HNT emissions are deposited to subDAO treasuries, existing Helium Validators, and HST holders. Each subnetwork rewards Hotspots through DNTs for data transfer and Proof-of-Coverage.
+   2. Remaining portions of the HIP 52 and HIP 53 specifications that are deemed to be within scope by Helium Foundation are bundled. This will likely include updates to the proof-of-coverage mechanism for the Mobile subDAO.
 
 3. Phase III (TBD) : After conducting a complete evaluation of all available Layer-1 blockchains to serve as the base layer of the Helium Network, a migration of the systems built until this point is actioned.
-    1. All accounts and transaction activity on the Helium Network is settled on this Layer-1 blockchain.
-    2. Bridges to migrate state from the prior chain are fully developed. Bridges that pass arbitrary messages for important state transitions from subDAO chains to the main chain are specified or on testnet.
-    3. Oracle mechanisms for subDAOs are precisely defined, and a secure transition process is proposed.
-    4. veHNT and veDNT governance mechanisms are put in place.
+   1. All accounts and transaction activity on the Helium Network is settled on this Layer-1 blockchain.
+   2. Bridges to migrate state from the prior chain are fully developed. Bridges that pass arbitrary messages for important state transitions from subDAO chains to the main chain are specified or on testnet.
+   3. Oracle mechanisms for subDAOs are precisely defined, and a secure transition process is proposed.
+   4. veHNT and veDNT governance mechanisms are put in place.
 
 # **Construction**
 
@@ -89,15 +91,15 @@ A user’s voting power is determined by 1) the amount of HNT they lock up with,
 For example, suppose A, B, and C all choose to lock up 1000 HNT:
 
 1. A chooses to lock up tokens for the minimum required duration of six months, and thus receives veHNT in the amount of 1000
-2. B chooses to lock up tokens for twenty-seven months, and thus receives veHNT in the amount of 50 * 1000 = 50,000
-3. C chooses to lock up tokens for forty-eight months, and thus receives veHNT in the amount of 100 * 1000 = 100,000
+2. B chooses to lock up tokens for twenty-seven months, and thus receives veHNT in the amount of 50 \* 1000 = 50,000
+3. C chooses to lock up tokens for forty-eight months, and thus receives veHNT in the amount of 100 \* 1000 = 100,000
 
 Note that durations are defined in blocks on the basis of the settlement time of the underlying L1.
 
 Note that only proposals with code attached can be formally voted on. There are broadly three ways to use voting power within the Helium DAO:
 
 1. **DAO Utility Score Curation** Users can choose to delegate their veHNT in the name of an existing subDAO, thereby positively impacting that subnetwork’s DAO utility score. This leads to increased emissions for the DNP subDAO treasury reserve, and ultimately increases the value of the corresponding DNT. This is effectively a mechanism to allow stakeholders to signal ongoing support for subnetworks. veHNT stakers towards a DNP are rewarded up to a fixed cap of 6% DNT emissions every epoch. This is fixed across DNPs and cannot be changed by the DNP. The reason to keep this fixed is to avoid a scenario where DNPs compete to give more rewards to veHNT stakers at the expense of hotspot hosts.
-2. **New Subnetwork Proposals** Proposals for new decentralized network protocol to become a part of the Helium Network as a subDAO must be voted on by veHNT.**
+2. **New Subnetwork Proposals** Proposals for new decentralized network protocol to become a part of the Helium Network as a subDAO must be voted on by veHNT.\*\*
 3. **Helium DAO Proposals** All proposals that impact global Helium DAO parameters including DAO utility score parameters, subDAO structuring, communications architecture etc. can be voted on through this process.
 
 Further details on the vote-escrow weighted governance model can be found in [Curve governance documentation](https://resources.curve.fi/governance/understanding-governance) and [https://docs.tribeca.so/electorate/voting-escrow](https://docs.tribeca.so/electorate/voting-escrow).
@@ -134,13 +136,13 @@ Most importantly, this model gives us a framework to add new DNPs in the future 
 
 ### **Key definitions and calculations for Omni-Protocol PoC incentive model**
 
-*DC burn used in PoC split calculation* DC burn is limited to data transfers per DNP. The calculation does *not* include fees associated with other actions, including, but not limited to, gateway assertions and gateway relocation fees.
+_DC burn used in PoC split calculation_ DC burn is limited to data transfers per DNP. The calculation does _not_ include fees associated with other actions, including, but not limited to, gateway assertions and gateway relocation fees.
 
-*Decentralized Network Protocol (DNP)* A computer network that uses data connections between network nodes and utilizes a uniform, standard set of rules that determine how data is transmitted between different devices in the same network. (i.e. LoRaWan, 5G, Wi-Fi, NB-IoT etc. all different Decentralized Network Protocols).
+_Decentralized Network Protocol (DNP)_ A computer network that uses data connections between network nodes and utilizes a uniform, standard set of rules that determine how data is transmitted between different devices in the same network. (i.e. LoRaWan, 5G, Wi-Fi, NB-IoT etc. all different Decentralized Network Protocols).
 
-*Frequency of PoC reward split recalculation* Recalculated every epoch using data from the trailing 30 days
+_Frequency of PoC reward split recalculation_ Recalculated every epoch using data from the trailing 30 days
 
-*Active Device* Active devices are the subDAO's definition of devices creating valid coverage (aka hotspots) and therefore being rewarded during the epoch.
+_Active Device_ Active devices are the subDAO's definition of devices creating valid coverage (aka hotspots) and therefore being rewarded during the epoch.
 
 ## subDAO Treasury Management
 
@@ -165,7 +167,7 @@ DNT emissions are decoupled entirely from the HNT that flows into the subDAO tre
 For a given subDAO to join the Helium Network, a veHNT denominated proposal is required as defined in the previous section. For each new subnetwork, a minimum viable construction is required, and includes the following sections:
 
 1. **Emissions Curve** Each subDAO must define the total supply, inflation rate, epochal issuance, and stakeholder distribution of its DNT. These are subject to change as per the subDAOs preferred governance layer.
-2. **Treasury Reserve DNT Market Making Curve** subDAOs have full control over the prices at which the subDAO treasury provides quotes to holders of DNT who wish to redeem their holdings for underlying HNT. This can be a flat bid or a more complex curve.**
+2. **Treasury Reserve DNT Market Making Curve** subDAOs have full control over the prices at which the subDAO treasury provides quotes to holders of DNT who wish to redeem their holdings for underlying HNT. This can be a flat bid or a more complex curve.\*\*
 3. **Oracle Specification** Oracles perform work including verifying proof of coverage and data transfer. The oracles are also responsible for distributing DNT mining rewards to the appropriate parties. Responsibilities here include definition of oracle software, minimum stake amounts, and rewards for participation.
 4. **Data Transfer Mechanism and Pricing** Data transfer across subnetworks occurs via the process of procuring and burning data credits in the name of the hotspot or set of hotspots that provide coverage. Responsibilities here include Organizationally Unique Identifier (OUI) registration, state channel creation, and bandwidth capacity per data credit definition.
 5. **Proof-of-Coverage Mechanism** Most subnetworks will utilize a Proof of Coverage algorithm to verify on an ongoing basis that hotspots are accurately representing their location and the wireless network coverage they are creating from that location. Responsibilities here include Proof-of-Coverage challenge construction, target selection, reward scaling, and verification. Note that subnetworks can choose to skip this mechanism, but must provide reasoning as to why it is not necessary for proper functioning of the subnetwork.
@@ -175,7 +177,7 @@ For a given subDAO to join the Helium Network, a veHNT denominated proposal is r
 
 We provide an end-to-end description of data transfer, proof-of-coverage, and oracle rewards for a given DNP under the Helium Network.
 
-*Data Transfer Process*
+_Data Transfer Process_
 
 For each DNP, a device looking to receive coverage across the network purchases Data Credits by **purchasing and burning HNT**.
 
@@ -185,23 +187,23 @@ The hotspot may dispute the State Channel summaries by submitting signed attesta
 
 Every epoch, DNP Oracles calculate each miner's rewards based on data transferred in State Channels and distributes it to accounts on the L1 according to the emissions schedule for the subDAO.
 
-*Proof-of-Coverage Process*
+_Proof-of-Coverage Process_
 
-The DNP subDAO defines the rules for Proof-of-Coverage activity. In a given epoch, Challengers, Challenges, and Witnesses ****(in the case of a three party POC process)****relay the results of challenges to DNP Oracles.
+The DNP subDAO defines the rules for Proof-of-Coverage activity. In a given epoch, Challengers, Challenges, and Witnesses \***\*(in the case of a three party POC process)\*\***relay the results of challenges to DNP Oracles.
 
 Every epoch, DNP Oracles calculate each miners’ rewards based on proof of coverage data and distribute DNT to accounts on the L1 according to the emissions schedule for the subDAO.
 
-*HNT Emissions Calculation to subDAO Treasury Reserve*
+_HNT Emissions Calculation to subDAO Treasury Reserve_
 
 At the end of a given epoch, the HNT emissions contract at the Helium DAO L1 calculates the amount of HNT to reward each DNP as per the DAO utility score in that given epoch. The emissions contract subsequently distributes the determined amount of HNT to the DNP subDAO treasury which is controlled by the DNP oracles.
 
-*Oracle Process*
+_Oracle Process_
 
 The DNP subDAO defines the rules for oracles to come to consensus, and distributes a portion of DNT emissions in a given epoch for DNP oracles.
 
 ![https://lh6.googleusercontent.com/6boBre9RQbrytVAu-kKZgqimQ-d5n19SUbw8IOkJDnlaazep_4dTn2yRHU_TGw_zYtbizMYWUY5k8ODeO7MiPNgXslJcOygxBICiVdB4NpzxstK0Cb5wuaK1LEpLsLyj68bWe1KIfkmiOz7ejQ](https://lh6.googleusercontent.com/6boBre9RQbrytVAu-kKZgqimQ-d5n19SUbw8IOkJDnlaazep_4dTn2yRHU_TGw_zYtbizMYWUY5k8ODeO7MiPNgXslJcOygxBICiVdB4NpzxstK0Cb5wuaK1LEpLsLyj68bWe1KIfkmiOz7ejQ)
 
-*DNT Liquidity from subDAO Treasury Reserve*
+_DNT Liquidity from subDAO Treasury Reserve_
 
 If a given address wishes to redeem their DNT, they can “sell” against the subDAO treasury’s bid on the order book to receive the current rate of underlying HNT.
 

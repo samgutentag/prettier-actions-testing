@@ -41,12 +41,12 @@ Community debate / discussion will be solicited via Discord in the respective hi
 
 Each miner on the network is a "constituent", with independent interests. Constituent miners can delegate their vote ("stake") in the collective network to a delegated pool entity "representative". There is no monetary cost to do so; the only potential cost is the net effect of your chosen delegate pool's election being less rewarding than another potential pool's. As an alternative approach, miners can be given the option to "opt-in" to a per-epoch stake, and then provided a list of available validator pools to delegate their votes to. From a UX standpoint this would look something like the following:
 
-1) User opens app to "Hotspots" page.
-2) User selects a particular miner's settings as currently exists (gear option on the miner panel).
-3) User is presented a toggle on this settings page, which opts-in/opts-out from staking to participate in CG.
-4) Any miners opted-out would not participate in CG nor receive CG awards as a result (opt-out is default when a new miner is onboarded or existing miner is transferred to a new owner).
-5) Any miners opted-in would be "billed" a staking fee from the owner wallet each epoch, which would in turn be delegated to the consensus pool of chosing (explanation follows).
-6) When opting-in, user would be presented a list of available staking pools, along with any relevant metrics for making the delegation decision. Some examples might be:
+1. User opens app to "Hotspots" page.
+2. User selects a particular miner's settings as currently exists (gear option on the miner panel).
+3. User is presented a toggle on this settings page, which opts-in/opts-out from staking to participate in CG.
+4. Any miners opted-out would not participate in CG nor receive CG awards as a result (opt-out is default when a new miner is onboarded or existing miner is transferred to a new owner).
+5. Any miners opted-in would be "billed" a staking fee from the owner wallet each epoch, which would in turn be delegated to the consensus pool of chosing (explanation follows).
+6. When opting-in, user would be presented a list of available staking pools, along with any relevant metrics for making the delegation decision. Some examples might be:
 
 - Average Rewards Paid Per Epoch
 - Pool Uptime (% of the time actively available to participate in elections)
@@ -66,9 +66,9 @@ Slashing techniques (partial or full loss of stake) may be employed, if this rel
 
 There are technically two separate and distinct stakes here:
 
-1) Validator Pool (Node) Entry Stake - this is required of a new pool to begin obtaining delegates and participating in CG. This pool is not involved in rewards; it simply is "locked" for as long as the validator wishes to participate in CG elections. It may also be desired to layer on some complexity here to incentivize pool operators to be consistent, reliable, and predictable (such as a "cool down" period required once a stake has been placed, so they are required to participate a certain duration before recalling stake, or requiring a waiting period before re-staking).
+1. Validator Pool (Node) Entry Stake - this is required of a new pool to begin obtaining delegates and participating in CG. This pool is not involved in rewards; it simply is "locked" for as long as the validator wishes to participate in CG elections. It may also be desired to layer on some complexity here to incentivize pool operators to be consistent, reliable, and predictable (such as a "cool down" period required once a stake has been placed, so they are required to participate a certain duration before recalling stake, or requiring a waiting period before re-staking).
 
-2) Constituent / Delegate Stake - this is required of individual constituent miners who are opting-in to staking and delegating their stake to validator pools / nodes. If a miner does not opt-in, they will not be charged a staking fee each epoch, and will not be eligible to receive CG rewards as a result. If miners opt-in, they will be billed the epoch stake at the initiation of each epoch period, and paid out any respective reward if their delegated stake is elected to and successfully participates in CG. These collections will constitute the reward pool for the elected pools (and by extension, their constituent delegator miners). Because of this, the rewards pool will grow and shrink respectively according on participation levels. If more miners stake, there is a greater stake at play. If less, then the opposite. This allows the reward pool to remain scaled to the current level of involvment and reward appropriately relative to "risk" or "chance".
+2. Constituent / Delegate Stake - this is required of individual constituent miners who are opting-in to staking and delegating their stake to validator pools / nodes. If a miner does not opt-in, they will not be charged a staking fee each epoch, and will not be eligible to receive CG rewards as a result. If miners opt-in, they will be billed the epoch stake at the initiation of each epoch period, and paid out any respective reward if their delegated stake is elected to and successfully participates in CG. These collections will constitute the reward pool for the elected pools (and by extension, their constituent delegator miners). Because of this, the rewards pool will grow and shrink respectively according on participation levels. If more miners stake, there is a greater stake at play. If less, then the opposite. This allows the reward pool to remain scaled to the current level of involvment and reward appropriately relative to "risk" or "chance".
 
 # Drawbacks
 

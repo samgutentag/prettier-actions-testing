@@ -9,6 +9,7 @@
 # Summary
 
 One paragraph explanation of the proposal.
+
 <!-- Read the content requests in all sections before starting to write any section. -->
 
 # Motivation
@@ -38,7 +39,7 @@ solve? What is the expected outcome?
 
 # Drawbacks
 
-- Why should we *not* do this?
+- Why should we _not_ do this?
 - What problems could occur if we do this?
 
 # Rationale and Alternatives

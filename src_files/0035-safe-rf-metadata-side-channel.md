@@ -490,7 +490,7 @@ Alice has a DIY hostspot built using a packet forwarder and a light client. She 
 She has built her own log processing stack that runs on the cloud and she wants to feed the packet analytics down to it.
 
 1. She then adjust the environment variables for `gateway-rs` and sets `HELIUM_ANALYTICS_CLIENT="my.cloud.service:12345`.
-4. Once the client restarts, she starts seeing data.
+2. Once the client restarts, she starts seeing data.
 
 ### 2. Example 2
 

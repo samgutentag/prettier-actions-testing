@@ -33,9 +33,11 @@ in one simple step that will naturally adapt to the current situation without mu
 This HIP does not have an affect to areas that have no other hotspots nearby.
 
 # Stakeholders
+
 All those already providing coverage
+
 - Who is affected by this HIP?
-All new "coverage" providers
+  All new "coverage" providers
 
 # Detailed Explanation
 
@@ -53,11 +55,12 @@ As an example we have a use-case sending out a ping and there is 6 Hotspots that
 
 The drawback is that the 6 dBi gangster on top of his highrise cannot farm an entire city by himself anymore. Although I believe that this never should have been allowed to happen to begin with. Helium needs growth and we can't have grwoth and redudancy as long as overlapping coverage is basically a latency war.
 
-- Why should we *not* do this?
+- Why should we _not_ do this?
 
 Honestly I see no reason. Good coverage is done by several miners and not by a single one.
 
 # Rationale and Alternatives
+
 Alternative 1 by disk91.com: Put in a 100 ms delay and then raffle the work to any of those that made it in time including the full reward.
 
 This is your chance to discuss your proposal in the context of the whole design

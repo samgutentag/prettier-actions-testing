@@ -58,32 +58,32 @@ in order to update the gateway's reward split in the ledger.
 
 ### Steps
 
-1. Hotspot owner creates a partially signed transaction with a proposed reward percentage to transfer
-as well as an optional HNT amount that is required to complete the transaction. The transaction would
-perform a validity check of the proposed percentage transfer by ensuring the % meets the following criteria
+1.  Hotspot owner creates a partially signed transaction with a proposed reward percentage to transfer
+    as well as an optional HNT amount that is required to complete the transaction. The transaction would
+    perform a validity check of the proposed percentage transfer by ensuring the % meets the following criteria
 
-        A. % is an integer
+            A. % is an integer
 
-        B. 1 <= % <= 100 (This range would be defined by a chain variable)
+            B. 1 <= % <= 100 (This range would be defined by a chain variable)
 
-        C. % <= the hotspot owners currently allocated reward %
+            C. % <= the hotspot owners currently allocated reward %
 
-2. Hotspot owner sends the partially signed transaction to the reward split receiver
+2.  Hotspot owner sends the partially signed transaction to the reward split receiver
 
-3. On receipt, the recipient ensures the proposed split is valid by verifying the following criteria
+3.  On receipt, the recipient ensures the proposed split is valid by verifying the following criteria
 
         A. The sum of all splits on the ledger would add up to 100 after the transaction
 
         B. The number of splits on the ledger does not exceed 10 (This limit would be defined by a chain variable)
 
-4. If valid, recipient signs the transaction and pays the DC fee to submit the transaction to the blockchain
+4.  If valid, recipient signs the transaction and pays the DC fee to submit the transaction to the blockchain
 
-5. If the receiving account contains sufficient HNT balance as requested by the hotspot
-owner and contains enough HNT to burn into DCs for the transaction, the transaction
-is accepted and the rewards_address field is updated in the ledger
+5.  If the receiving account contains sufficient HNT balance as requested by the hotspot
+    owner and contains enough HNT to burn into DCs for the transaction, the transaction
+    is accepted and the rewards_address field is updated in the ledger
 
-6. The hotspot appears in both the sender's hotspot list and as well as the recipient's
-hotspot list. The respective hotspot's rewards_address fields are reflected accordingly
+6.  The hotspot appears in both the sender's hotspot list and as well as the recipient's
+    hotspot list. The respective hotspot's rewards_address fields are reflected accordingly
 
 ## Implement the transaction in the helium-wallet client
 

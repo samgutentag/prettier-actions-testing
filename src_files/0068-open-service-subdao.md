@@ -9,7 +9,7 @@
 
 # Summary
 
-[HIP 51: Helium DAO](https://github.com/helium/HIP/blob/main/0051-helium-dao.md) proposed that each communications network built on top of the Helium Network has its own subDAO with its own token and governance. Till now, LoRaWAN subDAO, 5G subDAO, and WiFi subDAO are proposed. They are about communication networks. But another very significant subDAO that should be a next step,  is to help build the service market on Helium Network.
+[HIP 51: Helium DAO](https://github.com/helium/HIP/blob/main/0051-helium-dao.md) proposed that each communications network built on top of the Helium Network has its own subDAO with its own token and governance. Till now, LoRaWAN subDAO, 5G subDAO, and WiFi subDAO are proposed. They are about communication networks. But another very significant subDAO that should be a next step, is to help build the service market on Helium Network.
 
 For the services on CDN and VPN for example, there would be lots of projects that want to use Helium's Network to help run various services. We think for many Heliums nodes, their bandwidth resources, storage spaces, device performance, and all other idle resources, should be more fully taken used now and in the future.
 
@@ -29,18 +29,18 @@ This proposal is trying to come up with a win-win solution, or probably a revolu
 
 - What is the service list?
 
-    The service list is for multiple services to easily join/use Helium Network.
-    The Helium node owner could pick any services in the list, and install/uninstall the services.
-    The project side needs to pay the Data Credits to use the services provided by Helium nodes.
+  The service list is for multiple services to easily join/use Helium Network.
+  The Helium node owner could pick any services in the list, and install/uninstall the services.
+  The project side needs to pay the Data Credits to use the services provided by Helium nodes.
 
 - For the project side, how to join the list?
 
-    The project side should inform the usage scenarios, the resource it consumes, and publish the source codes, finishing the process to guarantee its security.
-    The subDAO committee will examine and approve/reject the application.
+  The project side should inform the usage scenarios, the resource it consumes, and publish the source codes, finishing the process to guarantee its security.
+  The subDAO committee will examine and approve/reject the application.
 
 - For the helium node owners, what do they need to do?
 
-    There need to update the service list, and be able to choose any services to install anytime, also be able to quit the services anytime.
+  There need to update the service list, and be able to choose any services to install anytime, also be able to quit the services anytime.
 
 # SubDao Governance
 
@@ -70,4 +70,4 @@ They could install the patch to share some resources to help Meson Network, and 
 # Unresolved Questions
 
 - Is it a better choice to get an open service list?
-    Or for each project to join to create an independent subDAO like Meson subDAO?
+  Or for each project to join to create an independent subDAO like Meson subDAO?

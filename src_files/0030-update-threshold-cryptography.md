@@ -37,19 +37,19 @@ An outline of the changes required to make BLS12-381 work with the Helium networ
 
 - **Add support for understanding BLS12-381 curve in Erlang**
 
-    The team has been building a compatibility layer [erlang-tc](https://github.com/helium/erlang-tc) to use in Erlang for [poanetwork/threshold_crypto](https://github.com/poanetwork/threshold_crypto) which provides bindings to BLS12-381 curve functions. The Rust code has been security audited.
+  The team has been building a compatibility layer [erlang-tc](https://github.com/helium/erlang-tc) to use in Erlang for [poanetwork/threshold_crypto](https://github.com/poanetwork/threshold_crypto) which provides bindings to BLS12-381 curve functions. The Rust code has been security audited.
 
 - **Add support for BLS12-381 based threshold cryptography to DKG**
 
-    In parallel, the team has been working on adding BLS12-381 compatibility to [erlang-dkg](https://github.com/helium/erlang-dkg). This work has been done in [erlang-dkg#36](https://github.com/helium/erlang-dkg/pull/36).
+  In parallel, the team has been working on adding BLS12-381 compatibility to [erlang-dkg](https://github.com/helium/erlang-dkg). This work has been done in [erlang-dkg#36](https://github.com/helium/erlang-dkg/pull/36).
 
 - **Add support for BLS12-381 based threshold cryptography to HBBFT**
 
-    The team has also been working on adding BLS12-381 compatibility to [erlang-hbbft](https://github.com/helium/erlang-hbbft). The progress of this work is available in [hbbft#66](https://github.com/helium/erlang-hbbft/pull/66).
+  The team has also been working on adding BLS12-381 compatibility to [erlang-hbbft](https://github.com/helium/erlang-hbbft). The progress of this work is available in [hbbft#66](https://github.com/helium/erlang-hbbft/pull/66).
 
 - **Update miner to use new HBBFT and DKG**
 
-    In order to make the switch to BLS12-381, the team has implemented a miner compatibility layer, the progress of which can be followed in [miner#733](https://github.com/helium/miner/pull/733).
+  In order to make the switch to BLS12-381, the team has implemented a miner compatibility layer, the progress of which can be followed in [miner#733](https://github.com/helium/miner/pull/733).
 
 # Drawbacks
 

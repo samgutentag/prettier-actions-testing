@@ -17,7 +17,6 @@ Much of the work done by Helium and the community has been made to optimize the 
 
 ## Stakeholders
 
-
 Anyone hosting a Helium gateway/miner and anyone using the network will be affected by this change.
 
 Feedback and discussion on this change will be solicited & heard through the existing HIP discussion channel(s) (primarily Discord, in the respective channel),
@@ -25,23 +24,21 @@ and as usual through any git repo commentary.
 
 ## Definitions
 
-
 - **LOS**: Line Of Sight, Rx visible from Tx
 - **GW**: Short for gateway aka hotspot, miner etc
 - **SFN**: Spreading Factor N
 - **Tx**: Transmitting gateway
 - **PoC**: Proof of Coverage
 - **Fade Margin**: Calculation artifact for potential environmental obsticles and other conditions
-- **Density_tgt**: Target number of hotspots in target hex resolution (example = 1).  Density in a target resolution hex will be clipped at this number unless certain conditions are met. This would be a chain variable for each resolution of interest.
+- **Density_tgt**: Target number of hotspots in target hex resolution (example = 1). Density in a target resolution hex will be clipped at this number unless certain conditions are met. This would be a chain variable for each resolution of interest.
 - **Density_max**: maximum number of hotspots to consider for target resolution any density beyond this will be clipped under any conditions. (Example= 4) This would be a chain variable for each resolution of interest.
 - **N**: number of neighboring hex’s that must meet **Density_tgt** before clipping will be raised above **Density_tgt**. (Example =2). This would be a chain variable for each resolution of interest.
-- *Interactive Hotspot**: an active hotspot that has also recently had a transmission witnessed. Lone wolves are active but not interactive.
-- **Occupied Hex**: hex where at least one interactive hotspot is present. This can apply to any resolution of interest.  It also implies that if we know a certain hex is occupied, all parents of that hex up to resolution 0 are also occupied.
+- \*Interactive Hotspot\*\*: an active hotspot that has also recently had a transmission witnessed. Lone wolves are active but not interactive.
+- **Occupied Hex**: hex where at least one interactive hotspot is present. This can apply to any resolution of interest. It also implies that if we know a certain hex is occupied, all parents of that hex up to resolution 0 are also occupied.
 - **Hex Whitelist**: a list of hex’s that are eligible for rewards, these could be specified at any level but in general should be as low a resolution (largest area) as possible. If this feature is not desired, you can assume all resolution 0 hexs are in the whitelist. This would be a chain variable.
 - **Region Scaling** TBD...
 
 ## Description
-
 
 ### Current situation
 
@@ -49,15 +46,16 @@ This proposal will build upon [Hip-17] and introduce scaling in regards to signa
 
 The following table shows the theoretical different signal range and area coverage for Europe and North America for different fade margins at receiver sensitivity -126 dBm ([SF8125kHz]):
 
-| Fade margin (dB) | Range @14dBm/🇪🇺  (km) | Range @27dBm/🇺🇸  (km) | Range difference factor | Area Coverage @14dBm/🇪🇺  (km^2) | Area Coverage @27dBm/🇺🇸  (km^2) | Area difference factor | Comments |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 0| 273 | 1220 | 4.5 | 234 140 | 4 675 947 | 20 | LOS, no building or obstacles |
-| 25 | 15.4 | 68.6 | 4.5 | 745 | 14 784 | 20 | ~1 obscuring building (Tx on rooftop, Rx inside a building) |
-| 40 | 2.7 | 12.2 | 4.5 | 23.4 | 468 | 20 | - |
-| 50 | 0.86 | 3.89 | 4.5 | 2.3 | 46.8 | 20 | ~2 obscuring building (Tx in building, Rx inside a building) |
+| Fade margin (dB) | Range @14dBm/🇪🇺 (km) | Range @27dBm/🇺🇸 (km) | Range difference factor | Area Coverage @14dBm/🇪🇺 (km^2) | Area Coverage @27dBm/🇺🇸 (km^2) | Area difference factor |                           Comments                           |
+| :--------------: | :------------------: | :------------------: | :---------------------: | :----------------------------: | :----------------------------: | :--------------------: | :----------------------------------------------------------: |
+|        0         |         273          |         1220         |           4.5           |            234 140             |           4 675 947            |           20           |                LOS, no building or obstacles                 |
+|        25        |         15.4         |         68.6         |           4.5           |              745               |             14 784             |           20           | ~1 obscuring building (Tx on rooftop, Rx inside a building)  |
+|        40        |         2.7          |         12.2         |           4.5           |              23.4              |              468               |           20           |                              -                               |
+|        50        |         0.86         |         3.89         |           4.5           |              2.3               |              46.8              |           20           | ~2 obscuring building (Tx in building, Rx inside a building) |
 
 <!-- TODO: Change Factor -->
-With an area coverage factor of 20  this gives the Helium Gateway owners vastly mixed signals about how and where to deploy hotspots optimaly and for what purpose.
+
+With an area coverage factor of 20 this gives the Helium Gateway owners vastly mixed signals about how and where to deploy hotspots optimaly and for what purpose.
 
 ### PoC Purpose
 
@@ -65,12 +63,10 @@ The Helium Network is not build for the sake of just building it, but mainly usi
 
 ## Drawbacks
 
-
 - This does not Take into account
 - This does not in any regard change the Lone Wolf edge case.
 
 ## Rationale and Alternatives
-
 
 - Not caring about regional differences: Adopting the **Keeping It Stupid, Simply** instead of the **Keep It Simple, Stupid** principle.
 - Asserting a scale factor directly to Hotspot during location assert procedure.
@@ -78,18 +74,15 @@ The Helium Network is not build for the sake of just building it, but mainly usi
 
 ## Unresolved Questions
 
-
 - Balancing scaling factor for each resolution
 - Scaling in regards to regional frequency differences.
 
 ## Deployment Impact
 
-
 This deployment will effect all hotspot owners. Hotspot owners in EU will likely see a significant change in earnings (either up or down) based on the new reward methodology.
 It will also require significant documentation update on how proof-of-coverage is performed and rewarded.
 
 ## Success Metrics
-
 
 <!-- References -->
 

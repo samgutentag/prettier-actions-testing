@@ -9,7 +9,7 @@
 
 # Summary
 
-Helium community members who host a Router instance use on-chain XOR filters to  process traffic from known devices in order to significantly improve performance. This is an integrated component of a Router instance, and allows Routers and Packet Purchasers on the network to avoid spending resources on join packets from unknown devices.
+Helium community members who host a Router instance use on-chain XOR filters to process traffic from known devices in order to significantly improve performance. This is an integrated component of a Router instance, and allows Routers and Packet Purchasers on the network to avoid spending resources on join packets from unknown devices.
 
 This HIP proposes a change for how fees are calculated when doing a XOR filter update with the goal of reducing these fees and enabling more updates to XOR filters.
 
@@ -36,7 +36,7 @@ The proposal is to not account for the full size of the XOR filter every time bu
 This approach increases the commercial viability for community members to host a Console/Router instance, only the difference of the XOR filter will be calculated vs paying for the entire amount each time.
 It’s useful to provide some context on how device data is routed on the Helium network to understand why this is a useful addition to the network.
 
-Today, a device attempts a new join via XOR filter  [XOR Filter](https://github.com/mpope9/exor_filter) associated with the paired OUI. The OUI includes a set of Device Addresses (DevAddrs) that will be assigned to newly joined devices (note these DevAddrs do not need to be unique for each device, the combination of application key is used to avoid conflicts).
+Today, a device attempts a new join via XOR filter [XOR Filter](https://github.com/mpope9/exor_filter) associated with the paired OUI. The OUI includes a set of Device Addresses (DevAddrs) that will be assigned to newly joined devices (note these DevAddrs do not need to be unique for each device, the combination of application key is used to avoid conflicts).
 
 An `OUI` can have up to 5 XOR filters, controlled by a chain variable: `max_xor_filter_num`.
 
@@ -48,7 +48,7 @@ The Hotspot can then look up in the filters and find out the appropriate Router 
 
 Hotspots use device `app_eui`, `dev_eui` to query the blockchain via XOR filter to identify which OUI to send join packets.
 
-Router which belongs to the OUI receives the  join request, sends down a join accept, and assigns the NwkAddr.
+Router which belongs to the OUI receives the join request, sends down a join accept, and assigns the NwkAddr.
 
 For future uplinks, gateways use a device’s devaddr to identify which router/oui to send to which is significantly quicker.
 

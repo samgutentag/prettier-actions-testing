@@ -83,7 +83,7 @@ repo's CI/CD process.
 
 # Drawbacks
 
-- Why should we *not* do this?
+- Why should we _not_ do this?
 
 Inserting a third party into the miner release process generates additional
 overhead for the Helium Blockchain Engineering team. Pull requests submitted to
@@ -139,13 +139,13 @@ scrutiny from Hotspot operators, regulators and large cryptocurrency exchanges.
 # Unresolved Questions
 
 - What parts of the design do you expect to resolve through the HIP process
-before this gets merged?
+  before this gets merged?
 
 Which signing methods integrates best with our existing build system and OTA
 update mechanism?
 
 - What related issues do you consider out of scope for this HIP that could be
-addressed in the future independently of the solution that comes out of this HIP?
+  addressed in the future independently of the solution that comes out of this HIP?
 
 How will Hotspot owners deliver their own OTA updates?
 
@@ -163,6 +163,6 @@ part of their software CI/CD pipeline if they feel so inclined.
 Success is measured by:
 
 - time it takes to Helium Blockchain and Embedded teams to implement a signing
-and verification solution
+  and verification solution
 
 - additional effort required by Helium Blockchain team to issue miner releases

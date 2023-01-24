@@ -62,7 +62,7 @@ Prospective manufacturers would be expected to provide:
 - Proof of reliable software configuration for the devices. This would include remote updates and the ability for hosts to change wifi settings, via Helium's official app or otherwise.
 - A list of other potential risks and issues
 
-Additionally, we want devices approved under this proposal to be reasonably secure and resistant to tampering. The original Helium hotspots used an ECC chip to house the  `swarm_key` using a secure ECC chip, which was significantly more secure than the external SD card and unencrypted file storage used by the current RAKspots. We propose that applicants are required to include:
+Additionally, we want devices approved under this proposal to be reasonably secure and resistant to tampering. The original Helium hotspots used an ECC chip to house the `swarm_key` using a secure ECC chip, which was significantly more secure than the external SD card and unencrypted file storage used by the current RAKspots. We propose that applicants are required to include:
 
 - Encrypted/locked-down firmware
 - Encrypted storage of the miner `swarm_key`, either via disk encryption or hardware measures like an ECC chip
@@ -145,7 +145,7 @@ Sensitive information like financials or proofs of identity could be furnished t
 6. Manufacturing Oversight Committee approval
 7. Pre-orders
 
-*note: items 3-4 can occur simultaneously*
+_note: items 3-4 can occur simultaneously_
 
 # Drawbacks
 

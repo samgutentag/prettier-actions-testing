@@ -47,17 +47,17 @@ We also propose that 50B HWIFI are pre-mined at the launch of the network, and d
 
 For clarity, the emission schedule is as follows:
 
-| Year | HWIFI at the start of the year | HWIFI minted | Hotspot PoC  | Hotspot Data (excess to PoC) | Mappers | Service Providers | Oracles | veHNT Stakers |
-|------|------------------------------|------------|--------------|------------------------------|---------|-------------------|---------|---------------|
-| 1    | 50B                          | 116B*      | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 2    | 116B                         | 33B        | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 3    | 1495B                        | 33B        | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 4    | 182B                         | 16.5B      | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 5    | 198.5B                       | 16.5B      | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 6    | 215B                         | 8.25B      | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
-| 7    | 223.25B                      | 8.25B      | 20%          | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| Year | HWIFI at the start of the year | HWIFI minted | Hotspot PoC | Hotspot Data (excess to PoC) | Mappers | Service Providers | Oracles | veHNT Stakers |
+| ---- | ------------------------------ | ------------ | ----------- | ---------------------------- | ------- | ----------------- | ------- | ------------- |
+| 1    | 50B                            | 116B\*       | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 2    | 116B                           | 33B          | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 3    | 1495B                          | 33B          | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 4    | 182B                           | 16.5B        | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 5    | 198.5B                         | 16.5B        | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 6    | 215B                           | 8.25B        | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
+| 7    | 223.25B                        | 8.25B        | 20%         | 40%                          | 10%     | 20%               | 4%      | 6%            |
 
-*50B pre-mine, 66B emitted in year 1
+\*50B pre-mine, 66B emitted in year 1
 
 At the end of a given epoch, WiFi subDAO oracles relay start balance, current balance, and total amount of HWIFI Data Credits created and relay to the L1 HNT emissions contract. The emissions contract subsequently distributes the determined amount of HNT as per the Protocol Score to the WiFi subDAO multi-signature wallet, the addresses of which comprise the set of oracles of the WiFi Network.
 
@@ -123,22 +123,22 @@ We propose that veHWIFI governance is constructed in a manner largely identical 
 
 Users can choose to delegate their lockup power in veHWIFI to all subDAO governance proposals. Proposals are assessed using majority and quorum thresholds defined in veHWIFI terms. Note that only proposals with code attached can be voted on.
 
-*Activation fee*
+_Activation fee_
 
 An activation fee of $10 will be applied to wifi hotspot hosts when activating their devices on the network.
 
-*Network participants*
+_Network participants_
 
 There are a number of real world physical entities that comprise the network and perform the following functional and economic roles:
 
-| Name              | Functional Role                                                                                                                                                                                                                                                                                         | Economic Role                                                                                                                            |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| Subscriber        | Uses the network                                                                                                                                                                                                                                                                                        | Pays service providers to access data on the network                                                                                     |
-| Mapper            | Runs a network mapping app on the phone or uses a dedicated mapper device to verify coverage provided by the hotspot hosts.  Mappers are required to be a subscriber.                                                                                                                                   | Receives HWIFI mining rewards for mapping networking coverage                                                                              |
-| Service Provider  | Promotes network service to subscribers and mappers  Runs subscriber database and authenticates inbound subscribers and mappers into the network    Records data transfer transactions to state channels Maintains their flavor of the witnessing app Responds to subscriber and mapper support queries | Receives payments for data access from subscribers and mappers  Burns HNT into Data Credits and settles data usage with hotspot hosts    |
-| Hotspot Host      | Operates a wifi hotspot and pays for backhaul.                                                                                                                                                                                                                                                          | Receives HWIFI mining rewards for providing coverage  Receives HWIFI mining rewards for providing data access to subscribers                 |
-| Oracles           | Relay data to L1 emission contract Calculate incentive points for service providers and mappers                                                                                                                                                                                                         | Stake HWIFI  Receive % of rewards from emissions contract                                                                                  |
-| Hotspot Vendor    | Builds and sells hotspots  Supports hotspot hosts  Runs software to provide  updates of hotspots Maintain integrations with service providers                                                                                                                                                           | Stakes HWIFI Receive % of rewards mined by hotspot hosts                                                                                   |
+| Name             | Functional Role                                                                                                                                                                                                                                                                                     | Economic Role                                                                                                                        |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Subscriber       | Uses the network                                                                                                                                                                                                                                                                                    | Pays service providers to access data on the network                                                                                 |
+| Mapper           | Runs a network mapping app on the phone or uses a dedicated mapper device to verify coverage provided by the hotspot hosts. Mappers are required to be a subscriber.                                                                                                                                | Receives HWIFI mining rewards for mapping networking coverage                                                                        |
+| Service Provider | Promotes network service to subscribers and mappers Runs subscriber database and authenticates inbound subscribers and mappers into the network Records data transfer transactions to state channels Maintains their flavor of the witnessing app Responds to subscriber and mapper support queries | Receives payments for data access from subscribers and mappers Burns HNT into Data Credits and settles data usage with hotspot hosts |
+| Hotspot Host     | Operates a wifi hotspot and pays for backhaul.                                                                                                                                                                                                                                                      | Receives HWIFI mining rewards for providing coverage Receives HWIFI mining rewards for providing data access to subscribers          |
+| Oracles          | Relay data to L1 emission contract Calculate incentive points for service providers and mappers                                                                                                                                                                                                     | Stake HWIFI Receive % of rewards from emissions contract                                                                             |
+| Hotspot Vendor   | Builds and sells hotspots Supports hotspot hosts Runs software to provide updates of hotspots Maintain integrations with service providers                                                                                                                                                          | Stakes HWIFI Receive % of rewards mined by hotspot hosts                                                                             |
 
 ![https://lh3.googleusercontent.com/G2Ii7fH3R81A7ff69C3MxvdX-1ROtEOc_LiHQhcjTpsIirIKsLomKEvufhCRB2mEd7gzeFIibUP_Qq0ssIp-j_GU4BKMxDKahd6Lyo67o0ya4iNJcTVtt77bb1A8zR0vlUjGnCK9EG06V0cEgQ](https://lh3.googleusercontent.com/G2Ii7fH3R81A7ff69C3MxvdX-1ROtEOc_LiHQhcjTpsIirIKsLomKEvufhCRB2mEd7gzeFIibUP_Qq0ssIp-j_GU4BKMxDKahd6Lyo67o0ya4iNJcTVtt77bb1A8zR0vlUjGnCK9EG06V0cEgQ)
 
@@ -148,7 +148,7 @@ Reward calculations that trigger distribution of tokens between service provider
 
 **Appendix**
 
-*Market landscape*
+_Market landscape_
 
 It's useful to think of the market for Helium WiFi in two halves. The first half is developed nations like the US, UK, Japan, etc. where broadband internet penetration is greater than 80% and as a result there are tens of millions of WiFi routers already in use. The second half is developing nations like India, Brazil, Indonesia, etc where broadband internet penetration is still at single digits - India for example is at a lowly 7% with only about 20 million broadband internet connections.
 
@@ -169,7 +169,7 @@ The Wifi subDAO offers service providers in developing markets compelling incent
 4. L2 software stack to simplify authentication, access and accounting.
 5. Higher network utilization as users and devices can roam across the network.
 
-*Wifi Dabba - Launch service provider & hotspot vendor*
+_Wifi Dabba - Launch service provider & hotspot vendor_
 
 [Wifi Dabba](https://www.wifidabba.com/) was founded in 2017 with a mission to bring a billion Indians online with super fast, super cheap broadband internet. Wifi Dabba uses lasers instead of expensive underground fiber to dramatically lower the cost of deploying city scale broadband infrastructure.
 

@@ -41,10 +41,10 @@ However, with recent network growth and overall setup quality of miners this can
 
 The limitations noted above are based off of the currently inforced limitations with PoC based on the following chain variables `poc_challenge_interval` and `poc_per_hop_max_witnesses`. There will be added wiggle room to account for the imperfect system. The two big factors that need to be accounted for in this wiggle room comes from the fact that LoRa communication aren't truly bidirectional in nature and that the current network state [^1] is less than ideal.
 
-| Chain Variables             | Value          | Units          |
-| --------------------------- | -------------- | -------------- |
-| `poc_challenge_interval`              | 360            | blocks         |
-| `poc_per_hop_max_witnesses` | 18             | per beacon     |
+| Chain Variables             | Value | Units      |
+| --------------------------- | ----- | ---------- |
+| `poc_challenge_interval`    | 360   | blocks     |
+| `poc_per_hop_max_witnesses` | 18    | per beacon |
 
 ## Calculate Witness Limit Cap - Daily limit on witnesses
 
@@ -54,12 +54,12 @@ To account for "good" and "bad" days the hard limit is a daily limit instead of 
 
 The `compensation_factor` is based on the theoritical max for the day divided by the average beacon count across the network which would result in 4/2 with the current network. Since most hotspots are only receiving 50% of expected beacons we multiple the results by this factor. Which at the time of writing is 2. Hopefully as we can get the average beacon rates closer to the theoritical max the `compensation factor` will return to the default value of 1.
 
-| Constants / Factors         | Value          | Units          |
-| --------------------------- | -------------- | -------------- |
-| `witness_list_bucket_size`  | 5              | days           |
-| `blocks_per_day`            | 1440           | blocks         |
-| `epochs_per_day`            | 48             | blocks         |
-| `compensation_factor`       | 2 => 1*        |                |
+| Constants / Factors        | Value    | Units  |
+| -------------------------- | -------- | ------ |
+| `witness_list_bucket_size` | 5        | days   |
+| `blocks_per_day`           | 1440     | blocks |
+| `epochs_per_day`           | 48       | blocks |
+| `compensation_factor`      | 2 => 1\* |        |
 
 `* Will be adjusted depending on the network state in regards to beacons. But the default value if the network is functioning as intended will be 1.`
 
@@ -72,11 +72,12 @@ witness_limit_cap = 576
 ```
 
 ---
+
 You can also use the following tools built with the DeWi ETL Metabase website. You'll need to have an account which requires a gmail.com email address to login.
 
 > [Check HIP-42 using Hotspot Name](https://etl.dewi.org/question/624-poc-witness-scaling-by-name-hip-42)
 
->[Check HIP-42 using Hotspots Public Address](https://etl.dewi.org/question/461-poc-witness-scaling-hip-42)
+> [Check HIP-42 using Hotspots Public Address](https://etl.dewi.org/question/461-poc-witness-scaling-hip-42)
 
 ---
 
@@ -103,6 +104,7 @@ Another concern, is with HIP-15 since an invalid witness actually hurts the rewa
 Hotspots could be limited depending on their setup:
 
 - Limited
+
   - [shallow-walnut-yak](https://etl.dewi.org/question/461-poc-witness-scaling-2-proposal-check?address=113dhjEAg55ozDSdonsM1gb9JuhdLcxQVFyaH5nJGA4WjMzVR9e)
 
 - Not Limited
@@ -111,6 +113,7 @@ Hotspots could be limited depending on their setup:
 # Rationale and Alternatives
 
 @paulM on Discord
+
 > Every time a hotspot beacons, a counter is reset for the number of witnesses that hotspot can submit and it counts down until it is zero and stops being able to submit witnesses. The counter amount is based on how many witnesses the most recent beacon got. For example, if the challenge is acknowledged but there are no witnesses, then the counter is set to 2, but if the beacon had witnesses set it to some multiple of the number of witnesses it got.
 
 ## Concerns

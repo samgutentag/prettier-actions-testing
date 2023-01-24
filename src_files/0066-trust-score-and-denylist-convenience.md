@@ -43,19 +43,19 @@ This HIP calculates a hotspot's Trust Score by focusing on the following data :
 
 Each hotspot has its own Trust Score. This document explains how the data will be used and how it will affect a hotspot's Trust Score, and why the data is relevant. Some of this data requires features to be added to the Helium app, in order to make the process more user-friendly than the denylist currently is. These are detailed as well.
 
-It is important to understand that all of the data is used to calculate the Trust Score. An honest hotspot can lose points in some places because their behavior is associated to that of a spoofer. For example, an honest hotspot using a VPN and showing an IP outside of the country it is located in will lose points. **Losing points does not mean a hotspot is automatically accused of spoofing**. The Trust Score takes everything into account. Losing points simply means that, from a purely statistical point of view, a hotspot is *more likely* to be spoofing. Since no penalty is given automatically, a hotspot that loses points for one type of data will not be added to the denylist if its activity appears to be normal.
+It is important to understand that all of the data is used to calculate the Trust Score. An honest hotspot can lose points in some places because their behavior is associated to that of a spoofer. For example, an honest hotspot using a VPN and showing an IP outside of the country it is located in will lose points. **Losing points does not mean a hotspot is automatically accused of spoofing**. The Trust Score takes everything into account. Losing points simply means that, from a purely statistical point of view, a hotspot is _more likely_ to be spoofing. Since no penalty is given automatically, a hotspot that loses points for one type of data will not be added to the denylist if its activity appears to be normal.
 
 The Trust Score should be visible on the Helium explorer. Users should be able to sort all hotspots by their Trust Score, or by specific data of their Trust Score (sorting hotspots by their score on RSSI and SNR values only, for example).
 
 For a better understanding of this document :
 
-**interaction** : Two hotspots are considered to be interacting when one of them witnesses the other. *Two hotspots witnessing the same beacon is not considered to be an interaction.*
+**interaction** : Two hotspots are considered to be interacting when one of them witnesses the other. _Two hotspots witnessing the same beacon is not considered to be an interaction._
 
 - # Blockchain addition date
 
 The date at which a hotspot is added to the blockchain cannot be changed. Spoofing farms often add many hotspots to the blockchain on the same day, making a cluster of hotspots witnessing each other that were added to the blockchain on the same day more likely to be spoofing than honest.
 
-**Impact on the Trust Score** : from **-1 to -0** for each interaction in the last 15 days with a hotspot that was added to the blockchain on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference  (-1 if both were added on the exact same date, -0 if they were added 30 days appart or more).
+**Impact on the Trust Score** : from **-1 to -0** for each interaction in the last 15 days with a hotspot that was added to the blockchain on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference (-1 if both were added on the exact same date, -0 if they were added 30 days appart or more).
 
 - # Asserted Location
 
@@ -65,8 +65,8 @@ Additionally, just like spoofing hotspots are likely to be added to the blockcha
 
 **Impact on the Trust Score** :
 
-- **-1** for each location assertion in the last 365 days *(the first location assertion in a hotspot's history doesn't count)*.
-- from **-1 to -0** for each interaction in the last 15 days with a hotspot whose latest location was asserted on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference  (-1 if both were asserted on the exact same date, -0 if they were asserted 30 days appart or more).
+- **-1** for each location assertion in the last 365 days _(the first location assertion in a hotspot's history doesn't count)_.
+- from **-1 to -0** for each interaction in the last 15 days with a hotspot whose latest location was asserted on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference (-1 if both were asserted on the exact same date, -0 if they were asserted 30 days appart or more).
 
 - # Owner addresses
 
@@ -94,7 +94,7 @@ Although it is certainly possible for some witness events to register a higher t
 
 **Impact on the Trust Score** : from **-0 to -1** for each interaction in the last 30 days showing an SNR value above a certain threshold, ranging from an SNR value of n to n+5, with n = 16.204e^(-0.086d) - 2, with d the registered distance between both hotspots (in kilometers).
 
-(The values were chosen *somewhat* arbitrarily, from the study of a small data set, for the sake of this first draft. It should definitely be improved upon before being implemented)
+(The values were chosen _somewhat_ arbitrarily, from the study of a small data set, for the sake of this first draft. It should definitely be improved upon before being implemented)
 
 ![image](https://user-images.githubusercontent.com/106159694/173186803-36f81096-b20c-47fb-85f3-bfbcccc26b48.png)
 
@@ -117,23 +117,23 @@ Additionally, even if an RSSI is low enough that a witness is not automatically 
 
 - # RSSI to distance variance
 
-*This idea was taken directly from Crowdspot.*
+_This idea was taken directly from Crowdspot._
 
 The RSSI shows the strength of the received signal. Normally, on average, the farther away the receiver is from the emitter, the lower the RSSI is. Even so, the relation between RSSI and distance is not constant. Every obstacle between both antennas affects the RSSI value. Outdoor obstacles include a variety of varying obstacles (humidity, swaying trees, smoke, tall moving vehicles like cranes, ...), meaning that even for a fixed distance between two hotspots, the RSSI should vary and be somewhat unpredictable. If the ratio of RSSI to distance seems to predictable, it could indicate a cluster of spoofing hotspots that are not actually exposed to the environment.
 
-*Explanation taken from Crowdspot :* ![image](https://user-images.githubusercontent.com/106159694/177018086-e09fd799-2dcd-4d5a-8b06-127c9f8043c3.png)
+_Explanation taken from Crowdspot :_ ![image](https://user-images.githubusercontent.com/106159694/177018086-e09fd799-2dcd-4d5a-8b06-127c9f8043c3.png)
 
 **Impact on the Trust Score** :
 
-- **-(R²-0.1) * n**, R² being the variance (same value as on Crowdspot), and n being the number of interactions in the last 7 days.
+- **-(R²-0.1) \* n**, R² being the variance (same value as on Crowdspot), and n being the number of interactions in the last 7 days.
 
- *(A value R² < 0.1 results in a gain of points, a value R² > 0.1 results in a loss of points).*
+  _(A value R² < 0.1 results in a gain of points, a value R² > 0.1 results in a loss of points)._
 
 - # IP address
 
 Spoofers often either use a VPN to conceal their IP in order to appear legit, or assert their location in a different country than their physical location.
 
-There are cases of honest hotspots having an IP in a different country than their asserted location. Some owners are using VPNs either for convenience, or to hide their mining activity from their ISP *(Internet Service Provider)*. ISP can also be using CGNAT, with the hotspot's IPv4 being located in a different country. However, the former can use a VPN located in their country, while the latter is rare enough that we can consider the case of IP addresses being located in a different country than the asserted location of a hotspot to be more likely to belong to a spoofing hotspot.
+There are cases of honest hotspots having an IP in a different country than their asserted location. Some owners are using VPNs either for convenience, or to hide their mining activity from their ISP _(Internet Service Provider)_. ISP can also be using CGNAT, with the hotspot's IPv4 being located in a different country. However, the former can use a VPN located in their country, while the latter is rare enough that we can consider the case of IP addresses being located in a different country than the asserted location of a hotspot to be more likely to belong to a spoofing hotspot.
 
 **Impact on the Trust Score** :
 
@@ -143,13 +143,13 @@ There are cases of honest hotspots having an IP in a different country than thei
 - # Interactions with other hotspots
 
 This HIP introduces the concept of **webs** of hotspots.
-A web of hotspots includes all hotspots that have interacted with each other in a given time frame. *If hotspot A interacts with hotspot B, hotspot B interacts with hotspot C, and hotspot C interacts with hotspot D, hotspots A through D are all part of the same web.*
+A web of hotspots includes all hotspots that have interacted with each other in a given time frame. _If hotspot A interacts with hotspot B, hotspot B interacts with hotspot C, and hotspot C interacts with hotspot D, hotspots A through D are all part of the same web._
 
 This concepts allows to separate clusters of hotspots that are only interacting with each other (including spoofing hotspots) and hotspots that are legitimately interacting with the wider network.
 
 **Clicking a hotspot on the explorer should highlight the web it is part of.** This is especially useful in dense areas, where it allows users to see which hotspots are on a closed loop and are only interacting with each other, which includes spoofers, since they are usually not physically present where their location is asserted.
 
-Example *(not representative of the actual situation in that area, hexes were chosen randomly for the purpose of this example)* :
+Example _(not representative of the actual situation in that area, hexes were chosen randomly for the purpose of this example)_ :
 ![image](https://user-images.githubusercontent.com/106159694/173186619-b34804ee-425b-4042-beac-080b1c0d34ba.png)
 
 In this example, the web can show us that the hotspots in the orange web are having a suspicious activity. Despite being located in a dense area with hundreds of other hotspots to interact with, the hotspots highlighted in orange are only interacting with each other, indicating a possible spoofing activity.
@@ -158,7 +158,7 @@ The green web is the largest web in the area, including most hotspots in that ar
 
 The other webs show hotspots that are too isolated to interact with the rest of the network.
 
-**Impact on the Trust Score** : **+n^0.5**, n being the number of unique hexes in the 7 day old web of the hotspot whose Trust Score is being calculated. **Capped at +20** *(reached at 400 hexes)*
+**Impact on the Trust Score** : **+n^0.5**, n being the number of unique hexes in the 7 day old web of the hotspot whose Trust Score is being calculated. **Capped at +20** _(reached at 400 hexes)_
 
 ![image](https://user-images.githubusercontent.com/106159694/173186557-4961e5de-becd-4595-b4fd-0387837497dc.png)
 
@@ -174,7 +174,7 @@ Like it is mentioned in HIP 58, over 99.9% of witnesses are within the 100km lim
 **Impact on the Trust Score** :
 
 - **-1** for each witness in the last 90 days that was invalid for being too far.
-- *For invalid witnesses being caused by a high RSSI value, the impact on the trust score was detailed in the RSSI section of the HIP.*
+- _For invalid witnesses being caused by a high RSSI value, the impact on the trust score was detailed in the RSSI section of the HIP._
 
 - # Changes to the Helium app and the explorer
 
@@ -189,17 +189,17 @@ This HIP introduces some changes to the Helium app and to the explorer :
 
 # All Trust Score calculations
 
-*A hotspot's Trust Score starts at 0. Then, points are either added or substracted depending on the hotspot's behavior in a given timeframe.*
+_A hotspot's Trust Score starts at 0. Then, points are either added or substracted depending on the hotspot's behavior in a given timeframe._
 
-- From **-1 to -0** for each interaction in the last 15 days with a hotspot that was added to the blockchain on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference  (-1 if both were added on the exact same date, -0 if they were added 30 days appart or more).
-- **-1** for each location assertion in the last 365 days *(the first location assertion in a hotspot's history doesn't count)*.
-- From **-1 to -0** for each interaction in the last 15 days with a hotspot whose latest location was asserted on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference  (-1 if both were asserted on the exact same date, -0 if they were asserted 30 days appart or more).
+- From **-1 to -0** for each interaction in the last 15 days with a hotspot that was added to the blockchain on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference (-1 if both were added on the exact same date, -0 if they were added 30 days appart or more).
+- **-1** for each location assertion in the last 365 days _(the first location assertion in a hotspot's history doesn't count)_.
+- From **-1 to -0** for each interaction in the last 15 days with a hotspot whose latest location was asserted on a similar date, depending on how close the dates are, ranging from a 0 to a 30-day difference (-1 if both were asserted on the exact same date, -0 if they were asserted 30 days appart or more).
 - **-1** for each interaction in the last 15 days with a hotspot that shares at least one address
 - **-1** per unique hotspot that was interacted with in the last 30 days and that shares an address in their money trail.
 - From **-0 to -1** for each interaction in the last 30 days showing an SNR value above a certain threshold, ranging from an SNR value of n to n+5, with n = 16.204e^(-0.086d) - 2, with d the registered distance between both hotspots (in kilometers).
 - **-1** per witness at least 2 hexes away in the last 60 days being invalid for having an RSSI too high.
 - From **-1 to -0** per valid witness at least 2 hexes away in the last 60 days whose RSSI is close to the maximum allowed value, ranging from a difference of 0 to 15 between the recorded RSSI value and the maximum allowed value.
-- **+n^0.5**, n being the number of unique hexes in the 7 day old web of the hotspot whose Trust Score is being calculated. **Capped at +20** *(reached at 400 hexes)*
+- **+n^0.5**, n being the number of unique hexes in the 7 day old web of the hotspot whose Trust Score is being calculated. **Capped at +20** _(reached at 400 hexes)_
 - **-1** for each witness in the last 90 days that was invalid for being too far.
 
 # Other ideas
@@ -212,7 +212,7 @@ Here are some more metrics that can be used to calculate the Trust Score. This c
 
 # Drawbacks
 
-The way the Trust Score is calculated might negatively impact some honest miners that are in very specific situations. Although precautions are taken to limit this impact, by spreading the Trust Score over many types of data, there will probably some honest miners losing points on several of them *(an isolated cluster of hotspots all connected to the same VPN, belonging to the same owner, that were added to the blockchain and whose location was asserted on the same day, and whose rewards are all sent to the same wallet, for example)*. However, regardless on their Trust Score, additions to the denylist are never automatic, and even these rare cases should be able to prove their integrity directly from the Helium app.
+The way the Trust Score is calculated might negatively impact some honest miners that are in very specific situations. Although precautions are taken to limit this impact, by spreading the Trust Score over many types of data, there will probably some honest miners losing points on several of them _(an isolated cluster of hotspots all connected to the same VPN, belonging to the same owner, that were added to the blockchain and whose location was asserted on the same day, and whose rewards are all sent to the same wallet, for example)_. However, regardless on their Trust Score, additions to the denylist are never automatic, and even these rare cases should be able to prove their integrity directly from the Helium app.
 
 # Rationale and Alternatives
 
@@ -242,7 +242,7 @@ Who will it affect, and how ?
 
 ❌ Honest hotspot owners in specific situations that fall through the cracks and end up with a low Trust Score, who might need to try harder to prove their integrity.
 
-*This change is entirely backwards compatible.*
+_This change is entirely backwards compatible._
 
 # Success Metrics
 

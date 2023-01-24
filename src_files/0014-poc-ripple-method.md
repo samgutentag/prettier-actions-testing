@@ -13,13 +13,13 @@
 The current Proof-of-Coverage (PoC) - Onion Packet method has the following issues that this proposal is meant to resolve:
 
 1. The data used to validate coverage can be easily modified or spoofed
-    1. RF - RSSI, SNR
-    2. GPS
-    3. Assert Location
+   1. RF - RSSI, SNR
+   2. GPS
+   3. Assert Location
 2. Current rewards associated to PoC is heavily favored in areas with high hotspot density (over-coverage)
-    1. Modesto, CA
-    2. New York City, NY
-    3. Port Huron, MI
+   1. Modesto, CA
+   2. New York City, NY
+   3. Port Huron, MI
 3. The selection process even though based on randomness can be selective due to the nature of the witness list. Since a group of hotspots can be engineered or placed to only witness themselves this approach allows for isolated groups. This makes it easy to build Virtual Machine (VM) or RF based hotspot farms. [This issue will be resolved with how the Ripple Effect functions][rippleBenefits]
 
 # Motivation
@@ -30,14 +30,14 @@ With a new day comes a new way "bad actors" attempt to profit from the current s
 
 1. A challenger selects a target hotspot.
 2. Once selected the challenger creates a PoC proof
-    1. Starting with the target hotspot the challenger selects the next hotspot in the PoC path based on witness list and [hex](https://h3geo.org/docs) location (how the 300m limit is enforced).
-    2. The challenger repeats the above step (2.i) but starts with the hotspot selected to be the next hop.
-    3. The PoC path is created containing 2 - 5 hotspots (hops)
+   1. Starting with the target hotspot the challenger selects the next hotspot in the PoC path based on witness list and [hex](https://h3geo.org/docs) location (how the 300m limit is enforced).
+   2. The challenger repeats the above step (2.i) but starts with the hotspot selected to be the next hop.
+   3. The PoC path is created containing 2 - 5 hotspots (hops)
 3. The initial challengee receives the PoC proof via the p2p network and decrypts the packet (envelope) it signs it and then returns it to the challenger
 4. The hotspot then broadcasts the new envelope that is now one layer less than the previous one via Radio Frequency (LoRa / RF).
 5. This signal is then picked up by neighboring hotspots. The receiving hotspots have two options.
-    1. The hotspot is the next hop in the PoC proof so it's able to decrypt another layer of the envelope and perform steps (4-5.i).
-    2. The hotspot isn't the next hop so it signs the envelope and returns to sender (challenger) via p2p.
+   1. The hotspot is the next hop in the PoC proof so it's able to decrypt another layer of the envelope and perform steps (4-5.i).
+   2. The hotspot isn't the next hop so it signs the envelope and returns to sender (challenger) via p2p.
 6. Steps 4 - 5 continue until the end of the PoC proof is reached resulting in a PoC receipt. This PoC receipt is then sent from the challenger to the Consensus Group to be validated.
 
 For more details go to: [PoC Documentation](https://developer.helium.com/blockchain/proof-of-coverage)
@@ -58,15 +58,15 @@ For more details go to: [PoC Documentation](https://developer.helium.com/blockch
 - `Hotspot Hex` - The hex associate with hotspot location currently in the blockchain
 - `Island Rating` - The overall rating of an island based on total # of chains received and longest chain in meters
 - `Challenger` - The hotspot that selects the `Island` to be targeted and the `Pebble` hotspots for the challenge
-- `Pebble (challengee)` - Selected by the challenger to start the *ripple*. There are two types of pebbles, the `initial` and `opposite`. The initial pebble receives the packet from challenger and the opposite pebble is the *target* for that packet. Each must be in a different `Island Hex`
+- `Pebble (challengee)` - Selected by the challenger to start the _ripple_. There are two types of pebbles, the `initial` and `opposite`. The initial pebble receives the packet from challenger and the opposite pebble is the _target_ for that packet. Each must be in a different `Island Hex`
 - `Accpeted Chain` - A chain that starts with a `Pebble` and ends with a `Pebble` hotspot with all hotspots signatures for each hop
 
-| Accepted Chains               |
-| :-:                           |
-| pHi => pHo                    |
-| pHi => iH => pHi              |
-| pHi => iH1 ... iHn => pHo     |
-|                               |
+|                                                   Accepted Chains                                                    |
+| :------------------------------------------------------------------------------------------------------------------: |
+|                                                      pHi => pHo                                                      |
+|                                                   pHi => iH => pHi                                                   |
+|                                              pHi => iH1 ... iHn => pHo                                               |
+|                                                                                                                      |
 | pHi (blue) = Initial Pebble Hotspot <br /> pHo (orange) = Opposite Pebble Hotspot <br /> iH (green) = Island Hotspot |
 
 - `Witness List` - Will be generated from the `pHi => iH => pHi` chains. This list won't incorporate hotspots within the same `Island Hex` but is included in the PoC due to the island construction
@@ -102,16 +102,17 @@ The network will be seperated into islands that are based on the geolocation of 
 🐺 are Islands that only consist of one hex with one hotspot in them and no witnesses
 
 !-->
+
 ## Ripple Effect
 
 1. The [`Challenger`][definitions] selects the [`Island`][definitions] to be challenged
 2. Then it selects the [`Pebble`][definitions] hotspots within that `Island`
 3. Once the `Pebble` hotspots are selected, the `Challenger` will initiate the `ripple`. The packet being sent will have the challenger information and the expected hexs that packet will pass through to reach maximum chain length. Only the opposite `Pebble` of the pair can decrypt the packet received to then send back to challenger or Consensus Group
 4. The `Pebble` hotspots receive the packet
-    1. They sign the packet in the spot for their [`Island Hex`][definitions] and broadcast it via RF (LoRa)
+   1. They sign the packet in the spot for their [`Island Hex`][definitions] and broadcast it via RF (LoRa)
 5. There are two options for the hotspots that receive this broadcasted packet
-    1. If, the receiving hotspot is the opposite `Pebble` hotspot, in this case the envelope will be able to be decrypted and sent back to the challenger
-    2. If, the receiving hotspot is **not** the opposite `Pebble` hotspot it will perform step (4.i) above
+   1. If, the receiving hotspot is the opposite `Pebble` hotspot, in this case the envelope will be able to be decrypted and sent back to the challenger
+   2. If, the receiving hotspot is **not** the opposite `Pebble` hotspot it will perform step (4.i) above
 6. This "ripple" occurs for a set timeframe or when the `Challenger` receives the expected number of chains from the `Pebble` hotspots
 
 ##### Chain Limitations
@@ -241,7 +242,7 @@ With the rewards structured to payout to the `Island` you're able to provide the
 # Drawbacks
 
 - It will require a lot of time coding the new model
-- This could create *new* ways to game the system
+- This could create _new_ ways to game the system
 - Current dense islands will not be rewarded as much
 
 # Rationale and Alternatives

@@ -7,6 +7,7 @@
 - Status: Closed
 
 # Summary
+
 The goals of these changes are to:
 
 1. Break up the PoC message to improve the reliability of PoC transmissions.
@@ -16,6 +17,7 @@ The link layer is the method by which information is send from one source to ano
 specific definition, please see the OSI model.
 
 # Motivation
+
 In our current implementation the link layer is extremely simple. We encode and transmit a single PoC payload with no redundancy or any additional
 correction applied. We have an issue right now that a PoC packet is not very resistant to noise or collision. Additionally, and more importantly,
 sending one packet with one signal reading infrequently (say twice a day) is not very descriptive. We are looking to better describe coverage quality,

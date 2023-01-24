@@ -20,7 +20,6 @@ This HIP affects only the Helium 5G network and has no impact on IoT rewards.
 
 Once implemented, Modeled Coverage will be a significant milestone in introducing the Proof-of-Coverage concept in the Mobile Network. The blog post [MOBILE Proof-of-Coverage: The Road Ahead](https://blog.helium.com/mobile-proof-of-coverage-the-road-ahead-73a25601a13d) provides a detailed MOBILE PoC Roadmap. Combined with other parameters like uptime and backhaul, Obstruction Data allows for more fair rewards and incentivizes high-quality deployments of Radios.
 
-
 # Motivation
 
 Building the MOBILE Network began with the Genesis Phase, during which 5G Hotspot Owners with Radios were rewarded for keeping the radios online vs. providing useful coverage. This was a necessary starting point to kickstart the deployments. However, to be successful, any MOBILE Network must be reliable, always available, and meet the expectations of its users. Using Modeled Coverage is an important step to measure the quality of coverage beyond self-reported data. In the future, it will be complemented and cross-checked by the data provided by Mobile Mappers.

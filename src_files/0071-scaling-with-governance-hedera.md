@@ -264,18 +264,18 @@ Hedera’s transaction fees are expressed in USD such that at the time a transac
 
 In the context of the services proposed to be used in this HIP, we can provide an indication of transaction fees as follows:
 
-| Operation | Transaction Fee |
-|-----------|-----------------|
+| Operation                                                  | Transaction Fee |
+| ---------------------------------------------------------- | --------------- |
 | Submit a message (up to 1 kbytes) to the consensus service | 0.00001 USD     |
-| Transfer tokens from one wallet to another | 0.0001 USD      |
-| Transfer tokens from one wallet to 9 others | 0.0007 USD      |
-| Topic Creation (one off) | 0.01 USD        |
-| Topic Rent (quarterly) | 0.00002 USD     |
-| Token Creation (one off) | 1 USD           |
-| Token Rent (quarterly) | 0.001 USD       |
-| Token Mint/Burn | 0.001 USD       |
-| Token Association (one off per wallet) | 0.05 USD        |
-| Wallet Rent (quarterly) | 0.0002 USD      |
+| Transfer tokens from one wallet to another                 | 0.0001 USD      |
+| Transfer tokens from one wallet to 9 others                | 0.0007 USD      |
+| Topic Creation (one off)                                   | 0.01 USD        |
+| Topic Rent (quarterly)                                     | 0.00002 USD     |
+| Token Creation (one off)                                   | 1 USD           |
+| Token Rent (quarterly)                                     | 0.001 USD       |
+| Token Mint/Burn                                            | 0.001 USD       |
+| Token Association (one off per wallet)                     | 0.05 USD        |
+| Wallet Rent (quarterly)                                    | 0.0002 USD      |
 
 Consensus messages are sent to a topic, the solution may call for 1 or more topics (to be determined), each topic can carry 1^64 messages.
 
@@ -285,23 +285,23 @@ In order to accept transfers of a token from other wallets, a wallet has to firs
 
 These examples assume that each report results in a payment and a single Oracle (per Geography) approving payments.
 
-| Description | Fee | Calculation |
-|-------------|-----|-------------|
-| 1M hourly beacon reports | $10 | 0.00001 * 1,000,000 |
-| Yearly (per hotspot) | $0.087 | 24 *7* 52 * 0.00001 |
-| 1M hourly individual payments | $100 | 0.0001 * 1,000,000 |
-| 1M daily individual payments | $4.1 | 100 / 24 |
-| 1M aggregated hourly payments (9 per transaction) | $78 | 0.0007 * 111,111 |
-| 1M aggregated daily payments (9 per transaction) | $2.24 | 78 / 24 |
+| Description                                       | Fee    | Calculation          |
+| ------------------------------------------------- | ------ | -------------------- |
+| 1M hourly beacon reports                          | $10    | 0.00001 \* 1,000,000 |
+| Yearly (per hotspot)                              | $0.087 | 24 _7_ 52 \* 0.00001 |
+| 1M hourly individual payments                     | $100   | 0.0001 \* 1,000,000  |
+| 1M daily individual payments                      | $4.1   | 100 / 24             |
+| 1M aggregated hourly payments (9 per transaction) | $78    | 0.0007 \* 111,111    |
+| 1M aggregated daily payments (9 per transaction)  | $2.24  | 78 / 24              |
 
-In the event multiple Oracles are approving payments (assuming 2 of 3), there is an increase in the transaction fees owing to the multi-signature verification ($0.0001 for the schedule fee and  $0.0006 for the second signature per operation)
+In the event multiple Oracles are approving payments (assuming 2 of 3), there is an increase in the transaction fees owing to the multi-signature verification ($0.0001 for the schedule fee and $0.0006 for the second signature per operation)
 
-| Description | Fee | Calculation |
-|-------------|-----|-------------|
-| 1M hourly individual payments | $800 | (0.0001 + 0.0001 + 0.0006) * 1,000,000 |
-| 1M daily individual payments | $34 | 800 / 24 |
-| 1M aggregated hourly payments (9 per transaction) | $155 | (0.0007 + 0.0001 + 0.0006) * 111,111 |
-| 1M aggregated daily payments (9 per transaction) | $6.45 | 155 / 24 |
+| Description                                       | Fee   | Calculation                             |
+| ------------------------------------------------- | ----- | --------------------------------------- |
+| 1M hourly individual payments                     | $800  | (0.0001 + 0.0001 + 0.0006) \* 1,000,000 |
+| 1M daily individual payments                      | $34   | 800 / 24                                |
+| 1M aggregated hourly payments (9 per transaction) | $155  | (0.0007 + 0.0001 + 0.0006) \* 111,111   |
+| 1M aggregated daily payments (9 per transaction)  | $6.45 | 155 / 24                                |
 
 ## Fairness
 

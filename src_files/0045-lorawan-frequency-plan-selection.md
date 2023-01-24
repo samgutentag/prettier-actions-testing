@@ -26,12 +26,13 @@ American Samoa), the selection for the Helium Network may default to that one.
 
 From the snippet above, you can see a few cases where selection is not so
 straightforward:
+
 - **Afghanistan, Angola, Antartica, Antigua and Barbuda, Aruba**: there is no
-channel plan suggestion nor is there one support for regulatory type approval
+  channel plan suggestion nor is there one support for regulatory type approval
 - **Aland Island, Albania, Algeria, Armenia**: there are multiple potential
-plans but not support for regulatory type approval
+  plans but not support for regulatory type approval
 - **Australia**: there are _two_ potential plans and both have regulatory
-type approval
+  type approval
 
 These cases each special consideration which requires deep technical expertise
 and local knowledge. This same reasoning also extends to countries that may
@@ -62,23 +63,23 @@ includes deep technical and business knowledge of the ecosystem.
 assignment or change of frequency plan per region and/or country**.
 
 1. Upon doing so, the DeWi LoRaWAN Committee will open a Pull Request (PR)
-to the [`helium/docs`](https://github.com/helium/docs) repository marking the
-change and providing the reasoning for the change. The announcement should
-also be made on the local Discord channel(s) and any other standard DeWi
-announcement channels.
+   to the [`helium/docs`](https://github.com/helium/docs) repository marking the
+   change and providing the reasoning for the change. The announcement should
+   also be made on the local Discord channel(s) and any other standard DeWi
+   announcement channels.
 2. There will be a minimum four-week window during which a public commentary
-will be open under the PR. During this period, anyone can propose a formal
-dissenting opinion with counter-arguments to the proposed change and must
-provide alternate solutions if possible.
+   will be open under the PR. During this period, anyone can propose a formal
+   dissenting opinion with counter-arguments to the proposed change and must
+   provide alternate solutions if possible.
 3. Should the discussion have any _formal_ dissent, a live virtual public
-forum will be in attempt to reach consensus. The author of the dissenting
-opinion must be ready to take the floor to represent their position.
+   forum will be in attempt to reach consensus. The author of the dissenting
+   opinion must be ready to take the floor to represent their position.
 4. If the change remains contentious, the decision will go to on-chain
-voting. Currently, that would be implemented using [Helium Vote](https://www.heliumvote.com/)
-mechanism where 1 hotspot in the concerned region equals 1 vote. Votes are
-cast by doing a DC burn transaction towards the appropriate wallet. A hotspot
-must be asserted in the concerned region for the entire duration of the vote,
-which must last at least seven days.
+   voting. Currently, that would be implemented using [Helium Vote](https://www.heliumvote.com/)
+   mechanism where 1 hotspot in the concerned region equals 1 vote. Votes are
+   cast by doing a DC burn transaction towards the appropriate wallet. A hotspot
+   must be asserted in the concerned region for the entire duration of the vote,
+   which must last at least seven days.
 
 After steps 2 and 3, before proceeding to the next escalation, DeWi's LoRaWAN
 Committee may withdraw their proposal and reissue a new proposal at anytime.
@@ -96,7 +97,7 @@ additional subbands.
 # Deployment Impact
 
 A change in frequency plan could potentially cause certain devices to not be
-eligible for operation under the new frequency plan, either due to  hardware
+eligible for operation under the new frequency plan, either due to hardware
 or legislative constraints (ie: lack of certification to transmit on the new
 frequencies).
 

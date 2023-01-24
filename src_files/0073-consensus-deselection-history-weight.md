@@ -21,10 +21,10 @@ on the selection. This will help eject poor performers from the Consensus Group
 more quickly and maintain overall high performance of the chain.
 
 The core developers will have discretion to set this new chain var
-(`election_penalty_history_percentage`) as they see fit in order to promote 
-performance of the blockchain. Because it does change election dynamics which 
-have a direct impact on validator operators, the core devs and I fell it is best 
-to bring this change as a HIP with a vote amongst at least validator operators 
+(`election_penalty_history_percentage`) as they see fit in order to promote
+performance of the blockchain. Because it does change election dynamics which
+have a direct impact on validator operators, the core devs and I fell it is best
+to bring this change as a HIP with a vote amongst at least validator operators
 as they are the ones primarily affected.
 
 The code for the change is already merged and tagged for release. However, it will
@@ -67,24 +67,24 @@ it controls how much previous versus current epoch penalties are used in selecti
 validators for removal from the current group. This change has two components:
 
 1. Introduce new chain var `election_penalty_history_percentage` which is used
-during scoring of existing group members before selecting members for removal.
-This value controls whether and how much the previous penalties (those in the
-ledger and thus earned outside of the current epoch) contribute to the score.\
-\
-Score for selecting to remove is thus:\
-`[election_penalty_history_percentage] * [total existing penalty]) + [current epoch performance penalties] + [current epoch tenure penalty]`
-\
-Currently, score for deselection is\
-`[total existing penalty] + [current epoch performance penalties]` 
+   during scoring of existing group members before selecting members for removal.
+   This value controls whether and how much the previous penalties (those in the
+   ledger and thus earned outside of the current epoch) contribute to the score.\
+   \
+   Score for selecting to remove is thus:\
+   `[election_penalty_history_percentage] * [total existing penalty]) + [current epoch performance penalties] + [current epoch tenure penalty]`
+   \
+   Currently, score for deselection is\
+   `[total existing penalty] + [current epoch performance penalties]`
 
-2. Change the tenure penalty from being applied at the beginning of the round to 
-being applied at the end of the round. This makes it so that the tenure penalty 
-for the current group is not part of the previous penalties and instead is counted 
-in the current epoch. This change is necessary because if the
-`election_penalty_history_percentage` is zero, we still want to count the
-current round's tenure penalty in the score for deselecting (i.e. validators
-must have a non-zero score for the inverse cumulative distribution function
-selection algorithm to work).
+2. Change the tenure penalty from being applied at the beginning of the round to
+   being applied at the end of the round. This makes it so that the tenure penalty
+   for the current group is not part of the previous penalties and instead is counted
+   in the current epoch. This change is necessary because if the
+   `election_penalty_history_percentage` is zero, we still want to count the
+   current round's tenure penalty in the score for deselecting (i.e. validators
+   must have a non-zero score for the inverse cumulative distribution function
+   selection algorithm to work).
 
 These changes are guarded behind `election_version` = 7. No changes are made in
 the logic for selection of new validators into CG. That continues to be weighted
@@ -130,8 +130,8 @@ probability. While this might be a bad thing for consistent poor performers, it
 also helps limit the damage that occurs from occasional poor performance or
 penalties caused by factors out of the control of operators (e.g., bugs in code,
 temporary issues with colo provider/ISP, etc.). By ejecting them from CG sooner,
-this gives an opportunity for the operator to mitigate the penalties accrued 
-for a normally high performing validator such as by rolling back the validator 
+this gives an opportunity for the operator to mitigate the penalties accrued
+for a normally high performing validator such as by rolling back the validator
 version, resolving a hardware or hosting provider issue, etc.
 
 # Rationale and Alternatives

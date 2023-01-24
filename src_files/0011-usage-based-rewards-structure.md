@@ -6,6 +6,7 @@
 - Author: @JMFayal
 
 # Summary
+
 Developing a DC reward system that combines a set reward per DC transmitted and a cap on total HNT per Epoch per hotspot continues to incentivize building the network around real world data usage, while still encouraging HNT burn and limiting the reward for extreme gamification. For the reward to have an impact it has to be significant enough to incentivize network building, which I believe is accomplished at setting the reward to $0.0001 per DC transfer or approximately 1000% the DC cost.
 
 # Stakeholders

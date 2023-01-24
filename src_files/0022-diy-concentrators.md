@@ -72,6 +72,7 @@ Merkle roots in state channels, network users can already verify that a specific
 the Helium Network at a certain time. With DIY concentrators, we may certify a location in a much stronger way.
 
 Finally, we believe this approach to have high extensibility in improving POC auditing:
+
 - statistical models may use this data as "known good actors" and use it to compare to potentially dishonest actors
 - actors capable of mobile auditing could be derived from this hardware
 - more complex "trust score" and POC auditing approaches could derive itself from this data (eg: GPS timestamping)
@@ -81,6 +82,7 @@ Finally, we believe this approach to have high extensibility in improving POC au
 A DIY Concentrator provides additional hardware security insofar as only secure firmware may operate the SX130x packet
 forwarder and sign the packets, thus proving packets have not been manipulated in software. As such, suitable processors
 must provide:
+
 - a tamper-proof hardware key store, guaranteeing that a key generated within may not be extracted (similar to the
   ECC608)
 - secure boot features, guaranteeing that only firmware signed by DeWi may executed (unlike ECC608, which does not
@@ -164,6 +166,7 @@ anti-tamper mechanisms may be deployed to reduce ease of tampering.
 
 In coordination with DeWi, the final design may
 feature the following such protections:
+
 - existing tamper proof features on the MAX32510
 - firmware on the MAX32510 could detect PCB modifications
 - an out of band check by the concentrator on the antenna port, ensuring that the stock antenna is deployed

@@ -12,7 +12,7 @@
 
 This proposal specifies a governance mechanism to enable modifications to chain variables (on-chain voting), and specifies an additional signaling mechanism for general purpose protocol improvements (off-chain voting).
 
-*Note: This HIP has been submitted In direct response to ["Rewrite HIP31 with Token Lock rather than Token Burn mechanism"](https://github.com/helium/HIP/pull/252)*
+_Note: This HIP has been submitted In direct response to ["Rewrite HIP31 with Token Lock rather than Token Burn mechanism"](https://github.com/helium/HIP/pull/252)_
 
 # Motivation
 
@@ -41,8 +41,8 @@ A user’s voting power is determined by 1) the amount of HNT they vote with, an
 As a simple example, let’s imagine Alice, Bob, and Charlie all have 100 HNT:
 
 1. Alice chooses to lock up her tokens for the minimum required 250,000 blocks, and thus her voting power is 100
-2. Bob commits to locking up his tokens for 1,375,000 blocks, and thus his voting power is 25 * 100 = 2,500
-3. Charlie commits to locking up his tokens for 2,500,000 blocks, and thus his voting power is 50 * 100 = 5,000
+2. Bob commits to locking up his tokens for 1,375,000 blocks, and thus his voting power is 25 \* 100 = 2,500
+3. Charlie commits to locking up his tokens for 2,500,000 blocks, and thus his voting power is 50 \* 100 = 5,000
 
 ![voting-power-multiplier-graph](0041-governance-by-token-lock-v2/voting-power-multiplier.png)
 

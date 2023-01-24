@@ -38,7 +38,7 @@ Miner and the Router/Network Server will create additional overhead.
 
 Finally, we do propose to round up DC costs; in a way this does mitigate this
 point above. Therefore, if I transmit a DataUp frame with 55 bytes:
-   `55/24.0 ~= 2.3 DCs => 3 DCs`
+`55/24.0 ~= 2.3 DCs => 3 DCs`
 burned on behalf of the Hotspot delivering the packet.
 
 # Motivation
@@ -99,7 +99,7 @@ we can help Network Users understand and avoid this misunderstanding.
 # Drawbacks
 
 - We must establish a clear definition of how DCs are expensed. Not doing so
-will cause confusion amonst both Operators and Users.
+  will cause confusion amonst both Operators and Users.
 
 # Rationale and Alternatives
 
