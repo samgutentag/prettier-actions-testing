@@ -21,8 +21,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      with:
+      - name: Chckout
+        uses: actions/checkout@v3
+        with:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
           # This is important to fetch the changes to the previous commit
@@ -38,4 +39,3 @@ jobs:
           prettier_options: --write **/*.{md,mdx}
           only_changed: True
           same_commit: True
-
