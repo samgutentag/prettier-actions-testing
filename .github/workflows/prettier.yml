@@ -22,16 +22,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
 
       # pretter Action
       - name: Prettier Action
@@ -41,3 +36,6 @@ jobs:
         with:
           # prettier_options: --print-width 100 --prose-wrap always --trailing-comma all --single-quote true --tab-width 2 --use-tabs false --write **/*.{md,mdx}
           prettier_options: --write **/*.{md,mdx}
+          only_changed: True
+          same_commit: True
+
