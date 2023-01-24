@@ -39,4 +39,4 @@ jobs:
         uses: creyD/prettier_action@6602189cf8bac1ce73ffe601925f6127ab7f21ac
         # uses: creyD/prettier_action@v4.2
         with:
-          prettier_options: --print-width 100 --prose-wrap "always" --trailing-comma "all" --single-quote true --tab-width 2 --use-tabs false --write **/*.{md,mdx}
+          prettier_options: --print-width 100 --prose-wrap always --trailing-comma all --single-quote true --tab-width 2 --use-tabs false --write **/*.{md,mdx}
